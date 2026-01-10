@@ -131,7 +131,7 @@ This project is open source and available for personal use.
 
 **Shuaib Alhajj**
 
-- Portfolio: [View Live](https://yourusername.github.io/my-personal-portfolio/)
+
 - GitHub: [@ShuaibAlhajj](https://github.com/ShuaibAlhajj)
 
 ## Contributing
