@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio | IT Student & Developer</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Font Awesome for Icons (Optional but recommended for social icons) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="container">
+        <a href="#" class="logo">Portfolio.</a>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="menu-toggle">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Hi, I'm <span class="highlight">Shuaib</span></h1>
+          <p class="subtitle">IT Student & Developer</p>
+          <p class="bio-short">
+            Creating modern web experiences and robust software solutions.
+          </p>
+          <a href="#contact" class="btn btn-primary">Contact Me</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+          <div class="about-text">
+            <p>
+              I am an Information Technology student passionate about building
+              functional and aesthetically pleasing digital solutions. With a
+              strong foundation in both software development and network design,
+              I aim to bridge the gap between technical complexity and user
+              experience.
+            </p>
+            <p>
+              My academic focus revolves around mastering diverse technologies,
+              from web development to desktop applications. I am driven by a
+              goal to become a versatile developer capable of tackling
+              real-world challenges with innovative code and design.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+      <div class="container">
+        <h2 class="section-title">My Skills</h2>
+        <div class="skills-grid">
+          <a href="skills/ui-ux.html" class="skill-card">
+            <i class="fas fa-pencil-ruler"></i>
+            <h3>UI/UX Design</h3>
+            <p>Creating intuitive and user-friendly interfaces.</p>
+          </a>
+          <a href="skills/network-design.html" class="skill-card">
+            <i class="fas fa-network-wired"></i>
+            <h3>Network Design</h3>
+            <p>Fundamentals of networking and infrastructure.</p>
+          </a>
+          <a href="skills/web-dev.html" class="skill-card">
+            <i class="fas fa-code"></i>
+            <h3>Web Development</h3>
+            <p>Front-End & Back-End technologies.</p>
+          </a>
+          <a href="skills/desktop-apps.html" class="skill-card">
+            <i class="fab fa-windows"></i>
+            <h3>Desktop Apps</h3>
+            <p>C# & Windows Forms development.</p>
+          </a>
+          <a href="skills/java.html" class="skill-card">
+            <i class="fab fa-java"></i>
+            <h3>Java Programming</h3>
+            <p>Object-oriented programming and logic.</p>
+          </a>
+          <a href="skills/graphic-design.html" class="skill-card">
+            <i class="fas fa-palette"></i>
+            <h3>Graphic Design</h3>
+            <p>Photoshop, Illustrator & visual assets.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+      <div class="container">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <div class="project-card">
+            <div class="project-info">
+              <h3>Portfolio Website</h3>
+              <p>
+                A personal portfolio built with HTML, CSS, and JavaScript to
+                showcase skills and projects.
+              </p>
+              <a href="#" class="project-link" target="_blank"
+                ><i class="fab fa-github"></i> View on GitHub</a
+              >
+            </div>
+          </div>
+          <!-- Project 2 -->
+          <div class="project-card">
+            <div class="project-info">
+              <h3>Library Management System</h3>
+              <p>
+                A desktop application built with C# and Windows Forms for
+                managing library resources.
+              </p>
+              <a href="#" class="project-link" target="_blank"
+                ><i class="fab fa-github"></i> View on GitHub</a
+              >
+            </div>
+          </div>
+          <!-- Project 3 -->
+          <div class="project-card">
+            <div class="project-info">
+              <h3>Network Topology Design</h3>
+              <p>
+                A simulated enterprise network design demonstrating secure
+                subnets and routing protocols.
+              </p>
+              <a href="#" class="project-link" target="_blank"
+                ><i class="fab fa-github"></i> View on GitHub</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-wrapper">
+          <div class="contact-info">
+            <div class="info-item">
+              <i class="fas fa-envelope"></i>
+              <span>email@example.com</span>
+            </div>
+            <div class="info-item">
+              <i class="fab fa-linkedin"></i>
+              <a href="#">LinkedIn Profile</a>
+            </div>
+            <div class="info-item">
+              <i class="fab fa-github"></i>
+              <a href="#">GitHub Profile</a>
+            </div>
+          </div>
+          <form class="contact-form" id="contactForm">
+            <input type="text" placeholder="Your Name" required />
+            <input type="email" placeholder="Your Email" required />
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <p>&copy; 2026 Shuaib. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

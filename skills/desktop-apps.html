@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desktop Apps | My Portfolio</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">Portfolio.</a>
+            <ul class="nav-links">
+                <li><a href="../index.html#home">Home</a></li>
+                <li><a href="../index.html#skills">Back to Skills</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Skill Header -->
+    <section class="skill-header">
+        <div class="container">
+            <h1>Desktop App Development</h1>
+            <p>C# & Windows Forms development.</p>
+        </div>
+    </section>
+
+    <!-- Code Snippet Section -->
+    <section class="skill-content">
+        <div class="container">
+            <h2 class="section-title">Code Snippet</h2>
+            <div class="code-block">
+                <pre><code>
+// C# Windows Forms Event Handler
+private void btnSubmit_Click(object sender, EventArgs e)
+{
+    string name = txtName.Text;
+    if (string.IsNullOrEmpty(name))
+    {
+        MessageBox.Show("Please enter your name.", "Validation Error", 
+            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+    }
+    else
+    {
+        MessageBox.Show($"Hello, {name}!", "Welcome");
+    }
+}
+                </code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section class="skill-gallery">
+        <div class="container">
+            <h2 class="section-title">Screenshots</h2>
+            <div class="gallery-grid">
+                <div class="gallery-placeholder">
+                    <i class="fab fa-windows"></i>
+                    <p>Application Dashboard</p>
+                </div>
+                <div class="gallery-placeholder">
+                    <i class="fas fa-table"></i>
+                    <p>Data Grid View</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Shuaib. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
