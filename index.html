@@ -12,20 +12,26 @@
     />
   </head>
   <body>
+    <a href="#home" class="skip-link">Skip to main content</a>
     <!-- Navigation -->
     <nav class="navbar">
       <div class="container">
         <a href="#" class="logo">Portfolio.</a>
-        <ul class="nav-links">
+        <button
+          class="menu-toggle"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+          aria-controls="nav-links"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-links" id="nav-links">
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
-        <div class="menu-toggle">
-          <i class="fas fa-bars"></i>
-        </div>
       </div>
     </nav>
 
