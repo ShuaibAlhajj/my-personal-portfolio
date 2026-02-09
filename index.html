@@ -12,20 +12,26 @@
     />
   </head>
   <body>
+    <a href="#home" class="skip-link">Skip to main content</a>
     <!-- Navigation -->
     <nav class="navbar">
       <div class="container">
         <a href="#" class="logo">Portfolio.</a>
-        <ul class="nav-links">
+        <button
+          class="menu-toggle"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          aria-controls="nav-links"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-links" id="nav-links">
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
-        <div class="menu-toggle">
-          <i class="fas fa-bars"></i>
-        </div>
       </div>
     </nav>
 
@@ -119,7 +125,7 @@
                 A personal portfolio built with HTML, CSS, and JavaScript to
                 showcase skills and projects.
               </p>
-              <a href="#" class="project-link" target="_blank"
+              <a href="#" class="project-link" target="_blank" aria-label="View Portfolio Website project on GitHub"
                 ><i class="fab fa-github"></i> View on GitHub</a
               >
             </div>
@@ -132,7 +138,7 @@
                 A desktop application built with C# and Windows Forms for
                 managing library resources.
               </p>
-              <a href="#" class="project-link" target="_blank"
+              <a href="#" class="project-link" target="_blank" aria-label="View Library Management System project on GitHub"
                 ><i class="fab fa-github"></i> View on GitHub</a
               >
             </div>
@@ -145,7 +151,7 @@
                 A simulated enterprise network design demonstrating secure
                 subnets and routing protocols.
               </p>
-              <a href="#" class="project-link" target="_blank"
+              <a href="#" class="project-link" target="_blank" aria-label="View Network Topology Design project on GitHub"
                 ><i class="fab fa-github"></i> View on GitHub</a
               >
             </div>
@@ -174,9 +180,15 @@
             </div>
           </div>
           <form class="contact-form" id="contactForm">
-            <input type="text" placeholder="Your Name" required />
-            <input type="email" placeholder="Your Email" required />
-            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <label for="contact-name" class="sr-only">Your Name</label>
+            <input type="text" id="contact-name" placeholder="Your Name" required />
+
+            <label for="contact-email" class="sr-only">Your Email</label>
+            <input type="email" id="contact-email" placeholder="Your Email" required />
+
+            <label for="contact-message" class="sr-only">Your Message</label>
+            <textarea id="contact-message" placeholder="Your Message" rows="5" required></textarea>
+
             <button type="submit" class="btn btn-primary">Send Message</button>
           </form>
         </div>
