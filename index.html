@@ -12,20 +12,21 @@
     />
   </head>
   <body>
+    <a href="#home" class="skip-link">Skip to main content</a>
     <!-- Navigation -->
     <nav class="navbar">
       <div class="container">
         <a href="#" class="logo">Portfolio.</a>
-        <ul class="nav-links">
+        <button class="menu-toggle" aria-label="Open Menu" aria-expanded="false" aria-controls="nav-links">
+          <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-links" id="nav-links">
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
-        <div class="menu-toggle">
-          <i class="fas fa-bars"></i>
-        </div>
       </div>
     </nav>
 
@@ -174,9 +175,15 @@
             </div>
           </div>
           <form class="contact-form" id="contactForm">
-            <input type="text" placeholder="Your Name" required />
-            <input type="email" placeholder="Your Email" required />
-            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <label for="name" class="sr-only">Your Name</label>
+            <input type="text" id="name" placeholder="Your Name" required />
+
+            <label for="email" class="sr-only">Your Email</label>
+            <input type="email" id="email" placeholder="Your Email" required />
+
+            <label for="message" class="sr-only">Your Message</label>
+            <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+
             <button type="submit" class="btn btn-primary">Send Message</button>
           </form>
         </div>
