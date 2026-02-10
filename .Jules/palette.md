@@ -1,0 +1,3 @@
+## 2025-05-22 - Accessibility and Semantic HTML Improvements
+**Learning:** Using non-semantic elements (like `div`) for interactive components (like menu toggles) creates significant accessibility barriers, including missing keyboard focus and ARIA state communication. Additionally, CSS selectors like `.menu-toggle.active + .nav-links` can inadvertently hide navigation on sub-pages where the toggle is not present if not carefully scoped.
+**Action:** Always use semantic `<button>` for toggles, implement `aria-expanded` and `aria-label` updates in JavaScript, and use specific selectors like `.menu-toggle + .nav-links` to ensure navigation visibility is protected on pages without a toggle.
