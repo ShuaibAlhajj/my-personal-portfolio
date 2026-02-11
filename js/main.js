@@ -5,11 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (menuToggle) {
         menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+            const isActive = navLinks.classList.toggle('active');
+            menuToggle.setAttribute('aria-expanded', isActive);
             
             // Toggle icon between bars and times
             const icon = menuToggle.querySelector('i');
-            if (navLinks.classList.contains('active')) {
+            if (isActive) {
                 icon.classList.remove('fa-bars');
                 icon.classList.add('fa-times');
             } else {
@@ -23,11 +24,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const navItems = document.querySelectorAll('.nav-links a');
     navItems.forEach(item => {
         item.addEventListener('click', () => {
-            if (navLinks.classList.contains('active')) {
+            if (navLinks && navLinks.classList.contains('active')) {
                 navLinks.classList.remove('active');
-                const icon = menuToggle.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
+                if (menuToggle) {
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    const icon = menuToggle.querySelector('i');
+                    if (icon) {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                }
             }
         });
     });
