@@ -144,6 +144,16 @@ img {
     font-size: 1.5rem;
     cursor: pointer;
     color: var(--text-color);
+    background: none;
+    border: none;
+    padding: 5px;
+    border-radius: 4px;
+    transition: var(--transition);
+}
+
+.menu-toggle:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
 }
 
 /* Hero Section */
