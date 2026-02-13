@@ -38,6 +38,13 @@ a {
     color: inherit;
 }
 
+a:focus-visible,
+button:focus-visible,
+.skill-card:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 4px;
+}
+
 ul {
     list-style: none;
 }
@@ -144,6 +151,9 @@ img {
     font-size: 1.5rem;
     cursor: pointer;
     color: var(--text-color);
+    background: none;
+    border: none;
+    padding: 0;
 }
 
 /* Hero Section */
@@ -417,7 +427,7 @@ footer {
         display: block;
     }
 
-    .nav-links {
+    .menu-toggle + .nav-links {
         position: absolute;
         top: 100%;
         left: 0;
