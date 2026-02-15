@@ -144,6 +144,15 @@ img {
     font-size: 1.5rem;
     cursor: pointer;
     color: var(--text-color);
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+/* Focus indicators for accessibility */
+:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 4px;
 }
 
 /* Hero Section */
@@ -427,11 +436,15 @@ footer {
         align-items: center;
         padding: 20px 0;
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
-        display: none;
+        display: flex;
         border-bottom: 1px solid var(--border-color);
     }
 
-    .nav-links.active {
+    .menu-toggle + .nav-links {
+        display: none;
+    }
+
+    .menu-toggle + .nav-links.active {
         display: flex;
     }
 
