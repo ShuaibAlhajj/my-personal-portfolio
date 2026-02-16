@@ -83,6 +83,24 @@ img {
     border: none;
 }
 
+/* Accessibility */
+:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 .btn-primary {
     background-color: var(--primary-color);
     color: #0f172a; /* Dark text on bright button for contrast */
@@ -144,6 +162,9 @@ img {
     font-size: 1.5rem;
     cursor: pointer;
     color: var(--text-color);
+    background: none;
+    border: none;
+    padding: 0;
 }
 
 /* Hero Section */
@@ -427,11 +448,14 @@ footer {
         align-items: center;
         padding: 20px 0;
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
-        display: none;
         border-bottom: 1px solid var(--border-color);
     }
 
-    .nav-links.active {
+    .menu-toggle + .nav-links {
+        display: none;
+    }
+
+    .menu-toggle + .nav-links.active {
         display: flex;
     }
 
