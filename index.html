@@ -179,9 +179,12 @@
             </div>
           </div>
           <form class="contact-form" id="contactForm">
-            <input type="text" placeholder="Your Name" required />
-            <input type="email" placeholder="Your Email" required />
-            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <label for="name" class="sr-only">Your Name</label>
+            <input type="text" id="name" placeholder="Your Name" required />
+            <label for="email" class="sr-only">Your Email</label>
+            <input type="email" id="email" placeholder="Your Email" required />
+            <label for="message" class="sr-only">Your Message</label>
+            <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
             <button type="submit" class="btn btn-primary">Send Message</button>
           </form>
         </div>
