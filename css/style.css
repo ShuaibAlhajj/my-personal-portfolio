@@ -144,6 +144,15 @@ img {
     font-size: 1.5rem;
     cursor: pointer;
     color: var(--text-color);
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+/* Better focus indicators for keyboard accessibility */
+:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 4px;
 }
 
 /* Hero Section */
@@ -417,7 +426,8 @@ footer {
         display: block;
     }
 
-    .nav-links {
+    /* Only hide navigation if it follows a menu toggle */
+    .menu-toggle + .nav-links {
         position: absolute;
         top: 100%;
         left: 0;
@@ -431,7 +441,7 @@ footer {
         border-bottom: 1px solid var(--border-color);
     }
 
-    .nav-links.active {
+    .menu-toggle + .nav-links.active {
         display: flex;
     }
 
