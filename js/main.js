@@ -40,12 +40,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Form Submission Handling (Demo)
     const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
+    const formStatus = document.getElementById('form-status');
+
+    if (contactForm && formStatus) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
             // Get form values
-            const name = contactForm.querySelector('input[type="text"]').value;
+            const name = document.getElementById('name').value;
             
             // Simple validation or visual feedback
             const btn = contactForm.querySelector('button');
@@ -53,10 +55,13 @@ document.addEventListener('DOMContentLoaded', () => {
             
             btn.innerText = 'Sending...';
             btn.disabled = true;
+            formStatus.textContent = '';
+            formStatus.className = 'form-status';
 
             // Simulate sending delay
             setTimeout(() => {
-                alert(`Thank you, ${name}! Your message has been sent (demo).`);
+                formStatus.textContent = `Thank you, ${name}! Your message has been sent.`;
+                formStatus.classList.add('success');
                 contactForm.reset();
                 btn.innerText = originalText;
                 btn.disabled = false;
