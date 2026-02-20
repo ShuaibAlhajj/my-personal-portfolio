@@ -44,9 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            // Get form values
-            const name = contactForm.querySelector('input[type="text"]').value;
-            
             // Simple validation or visual feedback
             const btn = contactForm.querySelector('button');
             const originalText = btn.innerText;
@@ -56,10 +53,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Simulate sending delay
             setTimeout(() => {
-                alert(`Thank you, ${name}! Your message has been sent (demo).`);
+                const successMsg = document.getElementById('form-success');
+                if (successMsg) {
+                    successMsg.style.display = 'block';
+                    // Scroll to success message
+                    successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+
                 contactForm.reset();
                 btn.innerText = originalText;
                 btn.disabled = false;
+
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    if (successMsg) successMsg.style.display = 'none';
+                }, 5000);
             }, 1500);
         });
     }
