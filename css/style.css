@@ -383,6 +383,34 @@ img {
     box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
 }
 
+/* Accessibility & Utilities */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.form-success {
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 5px;
+    background-color: rgba(56, 189, 248, 0.1);
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    text-align: center;
+    font-weight: 500;
+}
+
 /* Footer */
 footer {
     background-color: #020617; /* Very dark slate, almost black */

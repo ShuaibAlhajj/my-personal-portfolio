@@ -40,12 +40,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Form Submission Handling (Demo)
     const contactForm = document.getElementById('contactForm');
+    const formSuccess = document.getElementById('form-success');
+    let successTimeout;
+
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            // Get form values
-            const name = contactForm.querySelector('input[type="text"]').value;
+            // Get form values using id for precision
+            const name = contactForm.querySelector('input[id="name"]').value;
             
             // Simple validation or visual feedback
             const btn = contactForm.querySelector('button');
@@ -56,7 +59,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Simulate sending delay
             setTimeout(() => {
-                alert(`Thank you, ${name}! Your message has been sent (demo).`);
+                // Clear any existing timeout to prevent race conditions
+                if (successTimeout) {
+                    clearTimeout(successTimeout);
+                }
+
+                if (formSuccess) {
+                    formSuccess.innerText = `Thank you, ${name}! Your message has been sent (demo).`;
+                    formSuccess.classList.remove('hidden');
+
+                    // Hide message after 5 seconds
+                    successTimeout = setTimeout(() => {
+                        formSuccess.classList.add('hidden');
+                    }, 5000);
+                }
+
                 contactForm.reset();
                 btn.innerText = originalText;
                 btn.disabled = false;
