@@ -155,6 +155,19 @@ img {
     outline-offset: 4px;
 }
 
+/* Accessibility Utilities */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
 /* Hero Section */
 .hero {
     height: 100vh;
@@ -381,6 +394,17 @@ img {
 .contact-form textarea:focus {
     border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
+}
+
+.form-success {
+    color: var(--primary-color);
+    background: rgba(56, 189, 248, 0.1);
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid var(--primary-color);
+    margin-top: 10px;
+    font-weight: 500;
 }
 
 /* Footer */
