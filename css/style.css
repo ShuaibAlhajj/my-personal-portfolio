@@ -54,6 +54,18 @@ img {
     padding: 0 20px;
 }
 
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
 .section-title {
     font-size: 2.5rem;
     text-align: center;
@@ -381,6 +393,24 @@ img {
 .contact-form textarea:focus {
     border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
+}
+
+.form-success-msg {
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 5px;
+    background-color: rgba(34, 197, 94, 0.1);
+    color: #4ade80;
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.form-success-msg i {
+    font-size: 1.2rem;
 }
 
 /* Footer */
