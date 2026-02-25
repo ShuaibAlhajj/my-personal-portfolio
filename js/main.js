@@ -40,26 +40,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Form Submission Handling (Demo)
     const contactForm = document.getElementById('contactForm');
+    const formSuccess = document.getElementById('form-success');
+    let successTimeout;
+
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
             // Get form values
-            const name = contactForm.querySelector('input[type="text"]').value;
+            const nameInput = document.getElementById('name');
+            const name = nameInput ? nameInput.value : 'friend';
             
-            // Simple validation or visual feedback
+            // Visual feedback - Loading state
             const btn = contactForm.querySelector('button');
-            const originalText = btn.innerText;
+            const originalHTML = btn.innerHTML;
             
-            btn.innerText = 'Sending...';
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             btn.disabled = true;
+
+            // Hide previous success message if any
+            if (formSuccess) formSuccess.style.display = 'none';
+            if (successTimeout) clearTimeout(successTimeout);
 
             // Simulate sending delay
             setTimeout(() => {
-                alert(`Thank you, ${name}! Your message has been sent (demo).`);
+                // Success feedback
+                if (formSuccess) {
+                    formSuccess.style.display = 'flex';
+                    // Scroll to success message on mobile if needed
+                    if (window.innerWidth < 768) {
+                        formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }
+                }
+
                 contactForm.reset();
-                btn.innerText = originalText;
+                btn.innerHTML = originalHTML;
                 btn.disabled = false;
+
+                // Hide success message after 5 seconds
+                successTimeout = setTimeout(() => {
+                    if (formSuccess) formSuccess.style.display = 'none';
+                }, 5000);
             }, 1500);
         });
     }
