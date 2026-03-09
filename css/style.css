@@ -297,6 +297,32 @@ img {
     margin-bottom: 15px;
 }
 
+/* Accessibility Utility Class */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Form Feedback Notification */
+.form-feedback {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: 500;
+    text-align: center;
+    color: var(--primary-color);
+    background-color: rgba(56, 189, 248, 0.1);
+    border: 1px solid var(--primary-color);
+    animation: fadeInUp 0.5s ease-out;
+}
+
 .project-info p {
     color: var(--text-color);
     margin-bottom: 20px;
