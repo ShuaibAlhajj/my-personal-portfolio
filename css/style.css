@@ -94,6 +94,34 @@ img {
     box-shadow: 0 0 15px rgba(56, 189, 248, 0.4); /* Glow effect */
 }
 
+/* Screen reader only class for accessibility */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.form-feedback {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    text-align: center;
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.form-feedback.success {
+    color: var(--primary-color);
+    background-color: rgba(56, 189, 248, 0.1);
+    border: 1px solid var(--primary-color);
+}
+
 /* Navbar */
 .navbar {
     background-color: rgba(15, 23, 42, 0.95); /* Semi-transparent dark bg */
