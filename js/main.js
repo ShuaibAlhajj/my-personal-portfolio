@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             
             // Get form values
-            const name = contactForm.querySelector('input[type="text"]').value;
+            const name = document.getElementById('name').value;
             
             // Simple validation or visual feedback
             const btn = contactForm.querySelector('button');
