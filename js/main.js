@@ -40,26 +40,53 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Form Submission Handling (Demo)
     const contactForm = document.getElementById('contactForm');
+    const feedback = document.getElementById('form-feedback');
+    let feedbackTimeout;
+
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
             // Get form values
-            const name = contactForm.querySelector('input[type="text"]').value;
+            const name = document.getElementById('name').value;
             
             // Simple validation or visual feedback
             const btn = contactForm.querySelector('button');
-            const originalText = btn.innerText;
+            const originalContent = btn.innerHTML;
             
-            btn.innerText = 'Sending...';
+            // Loading state: spinner + text
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             btn.disabled = true;
+
+            // Clear any existing feedback timeout
+            if (feedbackTimeout) clearTimeout(feedbackTimeout);
+
+            // Hide previous feedback
+            if (feedback) {
+                feedback.classList.add('sr-only');
+                feedback.textContent = '';
+            }
 
             // Simulate sending delay
             setTimeout(() => {
-                alert(`Thank you, ${name}! Your message has been sent (demo).`);
-                contactForm.reset();
-                btn.innerText = originalText;
+                // Restore button
+                btn.innerHTML = originalContent;
                 btn.disabled = false;
+
+                // Show success message
+                if (feedback) {
+                    feedback.textContent = `Thank you, ${name}! Your message has been sent (demo).`;
+                    feedback.classList.remove('sr-only');
+
+                    // Reset form
+                    contactForm.reset();
+
+                    // Hide feedback after 5 seconds
+                    feedbackTimeout = setTimeout(() => {
+                        feedback.classList.add('sr-only');
+                        feedback.textContent = '';
+                    }, 5000);
+                }
             }, 1500);
         });
     }
