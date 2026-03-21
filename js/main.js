@@ -40,26 +40,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Form Submission Handling (Demo)
     const contactForm = document.getElementById('contactForm');
+    const feedbackMsg = document.getElementById('form-feedback');
+    let feedbackTimeout;
+
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            // Get form values
             const name = contactForm.querySelector('input[type="text"]').value;
-            
-            // Simple validation or visual feedback
             const btn = contactForm.querySelector('button');
-            const originalText = btn.innerText;
+            const originalHTML = btn.innerHTML;
             
-            btn.innerText = 'Sending...';
+            // Loading state
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             btn.disabled = true;
+            if (feedbackMsg) feedbackMsg.textContent = '';
+            clearTimeout(feedbackTimeout);
 
             // Simulate sending delay
             setTimeout(() => {
-                alert(`Thank you, ${name}! Your message has been sent (demo).`);
+                if (feedbackMsg) {
+                    feedbackMsg.textContent = `Thank you, ${name}! Your message has been sent (demo).`;
+                }
                 contactForm.reset();
-                btn.innerText = originalText;
+                btn.innerHTML = originalHTML;
                 btn.disabled = false;
+
+                // Clear message after 5 seconds
+                feedbackTimeout = setTimeout(() => {
+                    if (feedbackMsg) feedbackMsg.textContent = '';
+                }, 5000);
             }, 1500);
         });
     }
