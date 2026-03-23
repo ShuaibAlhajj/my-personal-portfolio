@@ -155,6 +155,19 @@ img {
     outline-offset: 4px;
 }
 
+/* Screen reader only utility */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 /* Hero Section */
 .hero {
     height: 100vh;
@@ -381,6 +394,26 @@ img {
 .contact-form textarea:focus {
     border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
+}
+
+#form-feedback {
+    margin-top: 15px;
+    font-size: 0.95rem;
+    text-align: center;
+    min-height: 1.5em;
+    transition: var(--transition);
+}
+
+#form-feedback:not(:empty) {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+#form-feedback.success {
+    color: #10b981; /* Emerald 500 */
+}
+
+#form-feedback.error {
+    color: #ef4444; /* Red 500 */
 }
 
 /* Footer */
