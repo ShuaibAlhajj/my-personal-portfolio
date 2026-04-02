@@ -155,6 +155,8 @@ img {
     outline-offset: 4px;
 }
 
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
 /* Hero Section */
 .hero {
     height: 100vh;
@@ -382,6 +384,8 @@ img {
     border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
 }
+
+#form-feedback:not(:empty) { margin-top: 15px; padding: 12px; border-radius: 5px; background: rgba(56, 189, 248, 0.1); border: 1px solid var(--primary-color); color: var(--primary-color); animation: fadeInUp 0.5s ease-out; }
 
 /* Footer */
 footer {
