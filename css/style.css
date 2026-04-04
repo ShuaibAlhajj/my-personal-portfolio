@@ -526,3 +526,10 @@ footer {
     font-size: 3rem;
     margin-bottom: 15px;
 }
+
+/* Accessibility Utility */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
+
+/* Form Feedback */
+#form-feedback { text-align: center; font-weight: 600; transition: var(--transition); border: 1px solid transparent; }
+#form-feedback:not(:empty) { padding: 10px; margin-top: 10px; border-radius: 5px; background: rgba(56, 189, 248, 0.1); border-color: var(--primary-color); color: var(--primary-color); animation: fadeInUp 0.5s ease-out; }
