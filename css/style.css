@@ -83,6 +83,9 @@ img {
     border: none;
 }
 
+/* Accessibility & Utilities */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
+
 .btn-primary {
     background-color: var(--primary-color);
     color: #0f172a; /* Dark text on bright button for contrast */
@@ -381,6 +384,24 @@ img {
 .contact-form textarea:focus {
     border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
+}
+
+#form-feedback {
+    min-height: 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center;
+    border-radius: 5px;
+    transition: var(--transition);
+    border: 1px solid transparent;
+}
+
+#form-feedback:not(:empty) {
+    padding: 10px;
+    background: rgba(56, 189, 248, 0.1);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    animation: fadeInUp 0.5s ease-out;
 }
 
 /* Footer */
