@@ -526,3 +526,6 @@ footer {
     font-size: 3rem;
     margin-bottom: 15px;
 }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+#form-feedback { padding: 15px; margin-top: 15px; text-align: center; border: 1px solid transparent; min-height: 50px; }
+#form-feedback:not(:empty) { background: rgba(56,189,248,0.1); border-color: var(--primary-color); color: var(--white); animation: fadeInUp 0.5s ease; }

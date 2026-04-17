@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    let feedbackTimeout;
     // Mobile Menu Toggle
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
@@ -43,23 +44,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            
-            // Get form values
-            const name = contactForm.querySelector('input[type="text"]').value;
-            
-            // Simple validation or visual feedback
-            const btn = contactForm.querySelector('button');
-            const originalText = btn.innerText;
-            
-            btn.innerText = 'Sending...';
+            if (feedbackTimeout) clearTimeout(feedbackTimeout);
+            const feedback = document.getElementById('form-feedback');
+            const btn = contactForm.querySelector('button'), original = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             btn.disabled = true;
-
-            // Simulate sending delay
             setTimeout(() => {
-                alert(`Thank you, ${name}! Your message has been sent (demo).`);
+                feedback.textContent = `Thank you, ${document.getElementById('name').value}! Message sent (demo).`;
                 contactForm.reset();
-                btn.innerText = originalText;
+                btn.innerHTML = original;
                 btn.disabled = false;
+                feedbackTimeout = setTimeout(() => { feedback.textContent = ''; }, 5000);
             }, 1500);
         });
     }
