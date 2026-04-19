@@ -526,3 +526,23 @@ footer {
     font-size: 3rem;
     margin-bottom: 15px;
 }
+
+#form-feedback {
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    text-align: center;
+    background-color: rgba(56, 189, 248, 0.1);
+    border: 1px solid transparent;
+    color: var(--white);
+    animation: fadeInUp 0.5s ease both;
+}
+
+#form-feedback:empty {
+    display: none;
+}
+
+#form-feedback:not(:empty) {
+    border-color: var(--primary-color);
+}
