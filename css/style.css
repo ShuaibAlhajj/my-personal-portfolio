@@ -74,13 +74,20 @@ img {
 }
 
 .btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
     padding: 12px 30px;
     border-radius: 5px;
     font-weight: 600;
     cursor: pointer;
     transition: var(--transition);
     border: none;
+}
+
+.sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;
 }
 
 .btn-primary {
@@ -381,6 +388,22 @@ img {
 .contact-form textarea:focus {
     border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
+}
+
+#form-feedback {
+    color: var(--white);
+    background-color: rgba(56, 189, 248, 0.1);
+    border: 1px solid transparent;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+
+#form-feedback:not(:empty) {
+    padding: 12px;
+    margin-bottom: 15px;
+    border-color: var(--primary-color);
+    animation: fadeInUp 0.5s ease-out;
 }
 
 /* Footer */
