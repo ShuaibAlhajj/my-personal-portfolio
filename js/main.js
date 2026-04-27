@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (menuToggle) {
         menuToggle.addEventListener('click', () => {
             const isActive = navLinks.classList.toggle('active');
-            menuToggle.setAttribute('aria-expanded', isActive);
+            menuToggle.setAttribute('aria-expanded', isActive ? 'true' : 'false');
             
             // Toggle icon between bars and times
             const icon = menuToggle.querySelector('i');
@@ -88,4 +88,28 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // ScrollSpy Logic
+    const sections = document.querySelectorAll('section[id]');
+    const scrollSpyOptions = {
+        rootMargin: '-20% 0px -70% 0px'
+    };
+
+    const scrollSpyObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                navItems.forEach(link => {
+                    link.classList.remove('active');
+                    link.removeAttribute('aria-current');
+                    if (link.getAttribute('href') === `#${id}`) {
+                        link.classList.add('active');
+                        link.setAttribute('aria-current', 'page');
+                    }
+                });
+            }
+        });
+    }, scrollSpyOptions);
+
+    sections.forEach(section => scrollSpyObserver.observe(section));
 });
