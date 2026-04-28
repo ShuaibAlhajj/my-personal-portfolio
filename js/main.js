@@ -88,4 +88,29 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // ScrollSpy: Highlight active link on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const scrollSpyOptions = {
+        rootMargin: '-20% 0px -70% 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    const isActive = link.getAttribute('href') === `#${id}`;
+                    link.classList.toggle('active', isActive);
+                    if (isActive) {
+                        link.setAttribute('aria-current', 'page');
+                    } else {
+                        link.removeAttribute('aria-current');
+                    }
+                });
+            }
+        });
+    }, scrollSpyOptions);
+
+    sections.forEach(section => observer.observe(section));
 });
