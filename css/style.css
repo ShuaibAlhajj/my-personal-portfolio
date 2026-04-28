@@ -547,3 +547,4 @@ footer {
     border-color: var(--primary-color);
     animation: fadeInUp 0.5s ease-out;
 }
+.nav-links a.active { color: var(--primary-color); }
