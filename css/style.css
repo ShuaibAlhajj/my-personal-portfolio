@@ -94,6 +94,18 @@ img {
     box-shadow: 0 0 15px rgba(56, 189, 248, 0.4); /* Glow effect */
 }
 
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
 /* Navbar */
 .navbar {
     background-color: rgba(15, 23, 42, 0.95); /* Semi-transparent dark bg */
