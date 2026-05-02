@@ -135,7 +135,9 @@ img {
     transition: var(--transition);
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a.active,
+.nav-links a[aria-current="location"] {
     color: var(--primary-color);
 }
 
