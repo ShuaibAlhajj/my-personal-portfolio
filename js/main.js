@@ -67,6 +67,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ScrollSpy: Update active link on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const observerOptions = { rootMargin: '-20% 0px -70% 0px' };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                navItems.forEach(link => {
+                    const isActive = link.getAttribute('href') === `#${id}`;
+                    link.classList.toggle('active', isActive);
+                    if (isActive) link.setAttribute('aria-current', 'location');
+                    else link.removeAttribute('aria-current');
+                });
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => observer.observe(section));
+
     // Smooth Scroll for Anchor Links (Optional JS enhancement for older browsers)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
