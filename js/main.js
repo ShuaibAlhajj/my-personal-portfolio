@@ -22,6 +22,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Close mobile menu when a link is clicked
     const navItems = document.querySelectorAll('.nav-links a');
+
+    // ScrollSpy Implementation
+    const sections = document.querySelectorAll('section[id]');
+    const observerOptions = {
+        rootMargin: '-20% 0px -70% 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                navItems.forEach(link => {
+                    const isActive = link.getAttribute('href') === `#${id}`;
+                    link.classList.toggle('active', isActive);
+                    if (isActive) {
+                        link.setAttribute('aria-current', 'location');
+                    } else {
+                        link.removeAttribute('aria-current');
+                    }
+                });
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => observer.observe(section));
+
     navItems.forEach(item => {
         item.addEventListener('click', () => {
             if (navLinks && navLinks.classList.contains('active')) {
