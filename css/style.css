@@ -549,3 +549,8 @@ footer {
     border-color: var(--primary-color);
     animation: fadeInUp 0.5s ease-out;
 }
+
+/* Back to Top Button */
+#back-to-top { position: fixed; bottom: 30px; right: 30px; width: 45px; height: 45px; background: var(--primary-color); color: var(--bg-color); border: none; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; box-shadow: var(--shadow); transition: var(--transition); z-index: 999; opacity: 0; visibility: hidden; }
+#back-to-top.active { opacity: 1; visibility: visible; }
+#back-to-top:hover { background: var(--primary-hover); transform: translateY(-5px); box-shadow: var(--shadow-hover); }
