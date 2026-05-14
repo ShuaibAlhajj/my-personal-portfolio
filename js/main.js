@@ -23,6 +23,25 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close mobile menu when a link is clicked
     const navItems = document.querySelectorAll('.nav-links a');
 
+    // Back to Top Button Logic
+    const backToTop = document.getElementById('back-to-top');
+    if (backToTop) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+
     // ScrollSpy Implementation
     const sections = document.querySelectorAll('section[id]');
     const observerOptions = {
@@ -105,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Account for fixed navbar height
                 const headerOffset = 70;
                 const elementPosition = targetElement.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                const offsetPosition = elementPosition + window.scrollY - headerOffset;
 
                 window.scrollTo({
                     top: offsetPosition,
