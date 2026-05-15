@@ -112,25 +112,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ScrollSpy: Update active link on scroll
-    const sections = document.querySelectorAll('section[id]');
-    const observerOptions = { rootMargin: '-20% 0px -70% 0px' };
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const id = entry.target.getAttribute('id');
-                navItems.forEach(link => {
-                    const isActive = link.getAttribute('href') === `#${id}`;
-                    link.classList.toggle('active', isActive);
-                    if (isActive) link.setAttribute('aria-current', 'location');
-                    else link.removeAttribute('aria-current');
-                });
-            }
+    // Copy to Clipboard for Code Blocks
+    const codeBlocks = document.querySelectorAll('.code-block');
+    codeBlocks.forEach(block => {
+        const copyBtn = document.createElement('button');
+        copyBtn.className = 'copy-btn';
+        copyBtn.setAttribute('aria-label', 'Copy code to clipboard');
+        copyBtn.innerHTML = '<i class="far fa-copy"></i>';
+        block.appendChild(copyBtn);
+
+        copyBtn.addEventListener('click', () => {
+            const code = block.querySelector('code').innerText.trim();
+            navigator.clipboard.writeText(code).then(() => {
+                copyBtn.innerHTML = '<i class="fas fa-check"></i>';
+                copyBtn.classList.add('copied');
+                setTimeout(() => {
+                    copyBtn.innerHTML = '<i class="far fa-copy"></i>';
+                    copyBtn.classList.remove('copied');
+                }, 2000);
+            });
         });
-    }, observerOptions);
-
-    sections.forEach(section => observer.observe(section));
+    });
 
     // Smooth Scroll for Anchor Links (Optional JS enhancement for older browsers)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
