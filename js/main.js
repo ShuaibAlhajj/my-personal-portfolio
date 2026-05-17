@@ -135,6 +135,34 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Copy Email to Clipboard
+    const copyEmailBtn = document.querySelector('.copy-email-btn');
+    if (copyEmailBtn) {
+        let isCopying = false;
+        copyEmailBtn.addEventListener('click', () => {
+            if (isCopying) return;
+            isCopying = true;
+
+            const email = copyEmailBtn.getAttribute('data-email');
+            navigator.clipboard.writeText(email).then(() => {
+                const icon = copyEmailBtn.querySelector('i');
+                const originalIconClass = icon.className;
+                const originalAriaLabel = copyEmailBtn.getAttribute('aria-label');
+
+                icon.className = 'fas fa-check';
+                copyEmailBtn.classList.add('copied');
+                copyEmailBtn.setAttribute('aria-label', 'Email copied!');
+
+                setTimeout(() => {
+                    icon.className = originalIconClass;
+                    copyEmailBtn.classList.remove('copied');
+                    copyEmailBtn.setAttribute('aria-label', originalAriaLabel);
+                    isCopying = false;
+                }, 2000);
+            });
+        });
+    }
+
     // Smooth Scroll for Anchor Links (Optional JS enhancement for older browsers)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
