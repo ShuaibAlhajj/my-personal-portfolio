@@ -153,6 +153,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     top: offsetPosition,
                     behavior: "smooth"
                 });
+
+                // Move focus to target element
+                targetElement.focus();
             }
         });
     });
