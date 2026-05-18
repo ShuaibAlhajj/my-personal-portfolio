@@ -9,3 +9,7 @@
 ## 2024-05-26 - Accessible Skip Links and Focus Management
 **Learning:** Implementing a "Skip to main content" link requires more than just an anchor; smooth-scrolling behavior often fails to move the actual keyboard focus, leaving users stuck at the top of the accessibility tree.
 **Action:** Always pair skip links with explicit `.focus()` calls in JavaScript after scrolling, and ensure destination sections have `tabindex="-1"` to reliably receive programmatic focus across all browsers.
+
+## 2024-05-27 - Atomic UI Feedback with State Guarding
+**Learning:** When implementing interactive feedback loops in JavaScript (like changing a button icon for 2 seconds), multiple rapid clicks can cause overlapping timeouts and reset logic, leading to "stuck" UI states.
+**Action:** Use a boolean flag (e.g., 'isCopying') to guard the interaction, ensuring only one feedback cycle runs at a time and resetting the state correctly before allowing the next action.
