@@ -39,6 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 top: 0,
                 behavior: 'smooth'
             });
+            const homeSection = document.getElementById('home');
+            if (homeSection) homeSection.focus();
         });
     }
 

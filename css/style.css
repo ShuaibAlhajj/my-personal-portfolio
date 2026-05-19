@@ -282,6 +282,8 @@ img {
     box-shadow: var(--shadow);
     transition: var(--transition);
     border: 1px solid var(--border-color);
+    position: relative;
+    cursor: pointer;
 }
 
 .project-card:hover {
@@ -316,6 +318,16 @@ img {
 .project-link:hover {
     text-decoration: underline;
     text-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
+}
+
+.project-link::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
 }
 
 /* Contact Section */
