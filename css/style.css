@@ -397,6 +397,24 @@ img {
     box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
 }
 
+.textarea-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.char-counter {
+    font-size: 0.8rem;
+    color: var(--gray);
+    text-align: right;
+    margin-top: 5px;
+    transition: var(--transition);
+}
+
+.char-counter.limit-reached {
+    color: #ef4444; /* Red color when limit is reached */
+}
+
 /* Footer */
 footer {
     background-color: #020617; /* Very dark slate, almost black */
