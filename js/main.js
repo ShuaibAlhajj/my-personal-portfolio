@@ -3,10 +3,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
 
+    const closeMenu = () => {
+        if (navLinks && navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+            if (menuToggle) {
+                menuToggle.setAttribute('aria-expanded', 'false');
+                const icon = menuToggle.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            }
+        }
+    };
+
     if (menuToggle) {
         menuToggle.addEventListener('click', () => {
             const isActive = navLinks.classList.toggle('active');
             menuToggle.setAttribute('aria-expanded', isActive);
+            document.body.classList.toggle('no-scroll', isActive);
             
             // Toggle icon between bars and times
             const icon = menuToggle.querySelector('i');
@@ -21,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Close mobile menu when a link is clicked
-    const navItems = document.querySelectorAll('.nav-links a');
+    const navItems = document.querySelectorAll('.nav-links a, .logo');
 
     // Back to Top Button Logic
     const backToTop = document.getElementById('back-to-top');
@@ -70,19 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.forEach(section => observer.observe(section));
 
     navItems.forEach(item => {
-        item.addEventListener('click', () => {
-            if (navLinks && navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
-                if (menuToggle) {
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                    const icon = menuToggle.querySelector('i');
-                    if (icon) {
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars');
-                    }
-                }
-            }
-        });
+        item.addEventListener('click', closeMenu);
     });
 
     // Form Submission Handling (Demo)
@@ -152,6 +156,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 2000);
             });
         });
+    });
+
+    // Close mobile menu on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeMenu();
+        }
     });
 
     // Copy Email to Clipboard
