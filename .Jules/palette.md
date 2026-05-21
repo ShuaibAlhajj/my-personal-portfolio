@@ -13,3 +13,7 @@
 ## 2024-05-27 - Atomic UI Feedback with State Guarding
 **Learning:** When implementing interactive feedback loops in JavaScript (like changing a button icon for 2 seconds), multiple rapid clicks can cause overlapping timeouts and reset logic, leading to "stuck" UI states.
 **Action:** Use a boolean flag (e.g., 'isCopying') to guard the interaction, ensuring only one feedback cycle runs at a time and resetting the state correctly before allowing the next action.
+
+## 2024-05-28 - Deterministic Counter Reset in Static Forms
+**Learning:** Browser-native `form.reset()` does not trigger `input` or `change` events, leaving custom UI overlays (like character counters) in stale states if not handled manually.
+**Action:** Always explicitly reset counter text and state-classes (e.g., `.limit-reached`) within the form's submit or reset handler to ensure the visual feedback loop stays synchronized with the actual input state.

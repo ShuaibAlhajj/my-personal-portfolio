@@ -88,7 +88,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Form Submission Handling (Demo)
     const contactForm = document.getElementById('contactForm');
     const feedback = document.getElementById('form-feedback');
+    const messageArea = document.getElementById('message');
+    const charCounter = document.getElementById('char-counter');
     let feedbackTimeout;
+
+    if (messageArea && charCounter) {
+        const updateCounter = () => {
+            const length = messageArea.value.length;
+            const maxLength = messageArea.maxLength;
+            charCounter.textContent = `${length} / ${maxLength}`;
+            charCounter.classList.toggle('limit-reached', length >= maxLength);
+        };
+
+        messageArea.addEventListener('input', updateCounter);
+    }
 
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
@@ -108,6 +121,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     feedbackTimeout = setTimeout(() => feedback.textContent = '', 5000);
                 }
                 contactForm.reset();
+                if (charCounter) {
+                    charCounter.textContent = `0 / ${messageArea.maxLength}`;
+                    charCounter.classList.remove('limit-reached');
+                }
                 btn.innerHTML = originalHTML;
                 btn.disabled = false;
             }, 1500);
