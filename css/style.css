@@ -450,6 +450,10 @@ footer {
 
 /* Media Queries */
 @media (max-width: 768px) {
+    body.no-scroll {
+        overflow: hidden;
+    }
+
     .navbar .container {
         position: relative;
     }
