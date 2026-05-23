@@ -178,12 +178,12 @@
           </div>
           <form class="contact-form" id="contactForm">
             <label for="name" class="sr-only">Your Name</label>
-            <input type="text" id="name" placeholder="Your Name" required />
+            <input type="text" id="name" placeholder="Your Name" required autocomplete="name" />
             <label for="email" class="sr-only">Your Email</label>
-            <input type="email" id="email" placeholder="Your Email" required />
+            <input type="email" id="email" placeholder="Your Email" required autocomplete="email" />
             <label for="message" class="sr-only">Your Message</label>
             <div class="textarea-wrapper">
-              <textarea id="message" placeholder="Your Message" rows="5" required maxlength="1000"></textarea>
+              <textarea id="message" placeholder="Your Message" rows="5" required maxlength="1000" aria-describedby="char-counter"></textarea>
               <div id="char-counter" class="char-counter" aria-live="polite">0 / 1000</div>
             </div>
             <button type="submit" class="btn btn-primary">Send Message</button>

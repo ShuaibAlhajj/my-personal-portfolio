@@ -17,3 +17,7 @@
 ## 2024-05-28 - Deterministic Counter Reset in Static Forms
 **Learning:** Browser-native `form.reset()` does not trigger `input` or `change` events, leaving custom UI overlays (like character counters) in stale states if not handled manually.
 **Action:** Always explicitly reset counter text and state-classes (e.g., `.limit-reached`) within the form's submit or reset handler to ensure the visual feedback loop stays synchronized with the actual input state.
+
+## 2024-05-29 - Secure and Accessible Dynamic Feedback
+**Learning:** Using `innerHTML` to inject dynamic feedback containing user-provided data (like names) introduces XSS vulnerabilities, and decorative icons in such feedback can clutter screen reader output.
+**Action:** Safely render user-provided data using `textContent` on a nested element while using `innerHTML` for structural icons, and always apply `aria-hidden="true"` to decorative icons to ensure a clean accessibility tree.

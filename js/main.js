@@ -116,7 +116,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             setTimeout(() => {
                 if (feedback) {
-                    feedback.textContent = `Thank you, ${name}! Your message has been sent (demo).`;
+                    feedback.innerHTML = `<i class="fas fa-check-circle" aria-hidden="true"></i> Thank you, <span id="user-name"></span>! Your message has been sent (demo).`;
+                    feedback.querySelector('#user-name').textContent = name;
                     clearTimeout(feedbackTimeout);
                     feedbackTimeout = setTimeout(() => feedback.textContent = '', 5000);
                 }
