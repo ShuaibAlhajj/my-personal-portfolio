@@ -39,16 +39,52 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close mobile menu when a link is clicked
     const navItems = document.querySelectorAll('.nav-links a, .logo');
 
-    // Back to Top Button Logic
+    // Reading Progress Bar
+    const navbar = document.querySelector('.navbar');
+    if (navbar) {
+        const progressContainer = document.createElement('div');
+        progressContainer.className = 'scroll-progress-container';
+        const progressBar = document.createElement('div');
+        progressBar.className = 'scroll-progress-bar';
+        progressBar.id = 'scroll-progress';
+
+        // Accessibility attributes for progress bar
+        progressBar.setAttribute('role', 'progressbar');
+        progressBar.setAttribute('aria-label', 'Reading progress');
+        progressBar.setAttribute('aria-valuemin', '0');
+        progressBar.setAttribute('aria-valuemax', '100');
+        progressBar.setAttribute('aria-valuenow', '0');
+
+        progressContainer.appendChild(progressBar);
+        navbar.appendChild(progressContainer);
+    }
+
+    // Back to Top & Progress Bar Scroll Logic
     const backToTop = document.getElementById('back-to-top');
-    if (backToTop) {
-        window.addEventListener('scroll', () => {
+    const progressBar = document.getElementById('scroll-progress');
+
+    window.addEventListener('scroll', () => {
+        // Back to top visibility
+        if (backToTop) {
             if (window.scrollY > 500) {
                 backToTop.classList.add('active');
             } else {
                 backToTop.classList.remove('active');
             }
-        });
+        }
+
+        // Progress bar width
+        if (progressBar) {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+            const roundedScrolled = Math.round(scrolled);
+            progressBar.style.width = scrolled + "%";
+            progressBar.setAttribute('aria-valuenow', roundedScrolled);
+        }
+    });
+
+    if (backToTop) {
 
         backToTop.addEventListener('click', () => {
             window.scrollTo({
