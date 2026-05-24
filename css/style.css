@@ -157,6 +157,13 @@ img {
     outline-offset: 4px;
 }
 
+/* Prevent scrolling when mobile menu is open */
+@media (max-width: 768px) {
+    body.no-scroll {
+        overflow: hidden;
+    }
+}
+
 /* Hero Section */
 .hero {
     height: 100vh;

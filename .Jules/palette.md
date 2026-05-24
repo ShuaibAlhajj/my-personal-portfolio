@@ -17,3 +17,7 @@
 ## 2024-05-28 - Deterministic Counter Reset in Static Forms
 **Learning:** Browser-native `form.reset()` does not trigger `input` or `change` events, leaving custom UI overlays (like character counters) in stale states if not handled manually.
 **Action:** Always explicitly reset counter text and state-classes (e.g., `.limit-reached`) within the form's submit or reset handler to ensure the visual feedback loop stays synchronized with the actual input state.
+
+## 2026-05-21 - Robust Mobile Navigation and Scroll Management
+**Learning:** Implementing background scroll locking for mobile overlays can lead to "stuck" scrolling on desktop if the state isn't cleared or if it's applied globally.
+**Action:** Always wrap '.no-scroll' overflow rules in a media query and centralize overlay state management (closing via Escape, logo, or links) into a single function to ensure consistency and prevent state desynchronization.
