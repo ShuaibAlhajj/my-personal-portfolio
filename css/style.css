@@ -157,6 +157,19 @@ img {
     outline-offset: 4px;
 }
 
+/* Reading Progress Bar */
+#scroll-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: var(--primary-color);
+    box-shadow: 0 0 10px var(--primary-color);
+    z-index: 1001;
+    transition: width 0.1s ease;
+}
+
 /* Prevent scrolling when mobile menu is open */
 @media (max-width: 768px) {
     body.no-scroll {
