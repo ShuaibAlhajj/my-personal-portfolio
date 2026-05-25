@@ -39,6 +39,35 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close mobile menu when a link is clicked
     const navItems = document.querySelectorAll('.nav-links a, .logo');
 
+    // Reading Progress Bar
+    const navbar = document.querySelector('.navbar');
+    if (navbar) {
+        const scrollProgress = document.createElement('div');
+        scrollProgress.id = 'scroll-progress';
+        scrollProgress.setAttribute('role', 'progressbar');
+        scrollProgress.setAttribute('aria-label', 'Reading progress');
+        scrollProgress.setAttribute('aria-valuemin', '0');
+        scrollProgress.setAttribute('aria-valuemax', '100');
+        scrollProgress.setAttribute('aria-valuenow', '0');
+        navbar.appendChild(scrollProgress);
+
+        // Update Reading Progress Bar
+        const updateProgressBar = () => {
+            const winScroll = window.scrollY;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            if (height > 0) {
+                const scrolled = (winScroll / height) * 100;
+                scrollProgress.style.width = scrolled + '%';
+                scrollProgress.setAttribute('aria-valuenow', Math.round(scrolled));
+            } else {
+                scrollProgress.style.width = '0%';
+                scrollProgress.setAttribute('aria-valuenow', '0');
+            }
+        };
+
+        window.addEventListener('scroll', updateProgressBar);
+    }
+
     // Back to Top Button Logic
     const backToTop = document.getElementById('back-to-top');
     if (backToTop) {
@@ -49,7 +78,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 backToTop.classList.remove('active');
             }
         });
+    }
 
+    if (backToTop) {
         backToTop.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
