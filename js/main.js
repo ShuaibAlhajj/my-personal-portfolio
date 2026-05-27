@@ -39,14 +39,39 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close mobile menu when a link is clicked
     const navItems = document.querySelectorAll('.nav-links a, .logo');
 
+    // Reading Progress Bar
+    const navbar = document.querySelector('.navbar');
+    let scrollProgress;
+    if (navbar) {
+        scrollProgress = document.createElement('div');
+        scrollProgress.id = 'scroll-progress';
+        scrollProgress.setAttribute('role', 'progressbar');
+        scrollProgress.setAttribute('aria-label', 'Reading progress');
+        scrollProgress.setAttribute('aria-valuemin', '0');
+        scrollProgress.setAttribute('aria-valuemax', '100');
+        scrollProgress.setAttribute('aria-valuenow', '0');
+        navbar.appendChild(scrollProgress);
+    }
+
     // Back to Top Button Logic
     const backToTop = document.getElementById('back-to-top');
-    if (backToTop) {
+    if (backToTop || scrollProgress) {
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 500) {
-                backToTop.classList.add('active');
-            } else {
-                backToTop.classList.remove('active');
+            // Update Reading Progress
+            if (scrollProgress) {
+                const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const progress = totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0;
+                scrollProgress.style.width = `${progress}%`;
+                scrollProgress.setAttribute('aria-valuenow', Math.round(progress));
+            }
+
+            // Back to Top Visibility
+            if (backToTop) {
+                if (window.scrollY > 500) {
+                    backToTop.classList.add('active');
+                } else {
+                    backToTop.classList.remove('active');
+                }
             }
         });
 
