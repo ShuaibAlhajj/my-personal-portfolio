@@ -21,3 +21,7 @@
 ## 2026-05-21 - Robust Mobile Navigation and Scroll Management
 **Learning:** Implementing background scroll locking for mobile overlays can lead to "stuck" scrolling on desktop if the state isn't cleared or if it's applied globally.
 **Action:** Always wrap '.no-scroll' overflow rules in a media query and centralize overlay state management (closing via Escape, logo, or links) into a single function to ensure consistency and prevent state desynchronization.
+
+## 2026-05-22 - Performance-Conscious Scroll Enhancements
+**Learning:** Adding dynamic UI elements like Reading Progress Bars that respond to scroll events can impact performance if multiple listeners are added or if they aren't throttled.
+**Action:** Consolidate scroll-dependent logic into a single window listener and consider throttling for more complex calculations to ensure a smooth 60fps experience during high-velocity scrolling.

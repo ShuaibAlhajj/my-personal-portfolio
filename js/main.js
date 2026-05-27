@@ -39,25 +39,57 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close mobile menu when a link is clicked
     const navItems = document.querySelectorAll('.nav-links a, .logo');
 
+    // Reading Progress Bar
+    const navbar = document.querySelector('.navbar');
+    let scrollProgress;
+
+    if (navbar) {
+        scrollProgress = document.createElement('div');
+        scrollProgress.id = 'scroll-progress';
+        scrollProgress.setAttribute('role', 'progressbar');
+        scrollProgress.setAttribute('aria-label', 'Reading progress');
+        scrollProgress.setAttribute('aria-valuenow', '0');
+        scrollProgress.setAttribute('aria-valuemin', '0');
+        scrollProgress.setAttribute('aria-valuemax', '100');
+        navbar.appendChild(scrollProgress);
+    }
+
     // Back to Top Button Logic
     const backToTop = document.getElementById('back-to-top');
-    if (backToTop) {
+    if (backToTop || scrollProgress) {
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 500) {
-                backToTop.classList.add('active');
-            } else {
-                backToTop.classList.remove('active');
+            const scrollY = window.scrollY;
+
+            // Back to Top
+            if (backToTop) {
+                if (scrollY > 500) {
+                    backToTop.classList.add('active');
+                } else {
+                    backToTop.classList.remove('active');
+                }
+            }
+
+            // Progress Bar
+            if (scrollProgress) {
+                const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+                if (totalHeight > 0) {
+                    const progress = (scrollY / totalHeight) * 100;
+                    scrollProgress.style.width = `${progress}%`;
+                    scrollProgress.setAttribute('aria-valuenow', Math.round(progress));
+                }
             }
         });
 
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+        if (backToTop) {
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+                const homeSection = document.getElementById('home');
+                if (homeSection) homeSection.focus();
             });
-            const homeSection = document.getElementById('home');
-            if (homeSection) homeSection.focus();
-        });
+        }
     }
 
     // ScrollSpy Implementation
