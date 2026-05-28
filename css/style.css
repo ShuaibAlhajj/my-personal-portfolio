@@ -89,7 +89,8 @@ img {
     color: #0f172a; /* Dark text on bright button for contrast */
 }
 
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-primary:focus {
     background-color: var(--primary-hover);
     transform: translateY(-2px);
     box-shadow: 0 0 15px rgba(56, 189, 248, 0.4); /* Glow effect */
@@ -261,7 +262,8 @@ img {
     border: 1px solid var(--border-color);
 }
 
-.skill-card:hover {
+.skill-card:hover,
+.skill-card:focus-within {
     transform: translateY(-10px);
     box-shadow: var(--shadow-hover);
     border-color: var(--primary-color);
@@ -306,7 +308,8 @@ img {
     cursor: pointer;
 }
 
-.project-card:hover {
+.project-card:hover,
+.project-card:focus-within {
     transform: translateY(-5px);
     box-shadow: var(--shadow-hover);
     border-color: var(--primary-color);
@@ -433,6 +436,22 @@ img {
 
 .char-counter.limit-reached {
     color: #ef4444; /* Red color when limit is reached */
+}
+
+.char-counter.approaching-limit {
+    color: var(--white);
+    font-weight: 600;
+}
+
+.form-feedback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.form-feedback i {
+    color: var(--primary-color);
 }
 
 /* Footer */
