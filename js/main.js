@@ -134,6 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const maxLength = messageArea.maxLength;
             charCounter.textContent = `${length} / ${maxLength}`;
             charCounter.classList.toggle('limit-reached', length >= maxLength);
+            charCounter.classList.toggle('approaching-limit', length >= maxLength * 0.9 && length < maxLength);
         };
 
         messageArea.addEventListener('input', updateCounter);
@@ -152,7 +153,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             setTimeout(() => {
                 if (feedback) {
-                    feedback.textContent = `Thank you, ${name}! Your message has been sent (demo).`;
+                    feedback.innerHTML = `<i class="fas fa-check-circle" aria-hidden="true"></i> Thank you, <span id="user-name"></span>! Your message has been sent (demo).`;
+                    feedback.querySelector('#user-name').textContent = name;
                     clearTimeout(feedbackTimeout);
                     feedbackTimeout = setTimeout(() => feedback.textContent = '', 5000);
                 }
@@ -160,6 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (charCounter) {
                     charCounter.textContent = `0 / ${messageArea.maxLength}`;
                     charCounter.classList.remove('limit-reached');
+                    charCounter.classList.remove('approaching-limit');
                 }
                 btn.innerHTML = originalHTML;
                 btn.disabled = false;
@@ -174,17 +177,30 @@ document.addEventListener('DOMContentLoaded', () => {
         const copyBtn = document.createElement('button');
         copyBtn.className = 'copy-btn';
         copyBtn.setAttribute('aria-label', 'Copy code to clipboard');
+        copyBtn.setAttribute('title', 'Copy code to clipboard');
         copyBtn.innerHTML = '<i class="far fa-copy"></i>';
         block.appendChild(copyBtn);
 
+        let isCopying = false;
         copyBtn.addEventListener('click', () => {
+            if (isCopying) return;
+            isCopying = true;
+
             const code = block.querySelector('code').innerText.trim();
             navigator.clipboard.writeText(code).then(() => {
-                copyBtn.innerHTML = '<i class="fas fa-check"></i>';
+                const icon = copyBtn.querySelector('i');
+                const originalIconClass = icon.className;
+                const originalAriaLabel = copyBtn.getAttribute('aria-label');
+
+                icon.className = 'fas fa-check';
                 copyBtn.classList.add('copied');
+                copyBtn.setAttribute('aria-label', 'Code copied!');
+
                 setTimeout(() => {
-                    copyBtn.innerHTML = '<i class="far fa-copy"></i>';
+                    icon.className = originalIconClass;
                     copyBtn.classList.remove('copied');
+                    copyBtn.setAttribute('aria-label', originalAriaLabel);
+                    isCopying = false;
                 }, 2000);
             });
         });
