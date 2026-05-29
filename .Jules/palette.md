@@ -25,3 +25,7 @@
 ## 2026-05-22 - Performance-Conscious Scroll Enhancements
 **Learning:** Adding dynamic UI elements like Reading Progress Bars that respond to scroll events can impact performance if multiple listeners are added or if they aren't throttled.
 **Action:** Consolidate scroll-dependent logic into a single window listener and consider throttling for more complex calculations to ensure a smooth 60fps experience during high-velocity scrolling.
+
+## 2026-05-29 - [Inclusive Interaction and Progressive Disclosure]
+**Learning:** Keyboard users often miss out on hover-based visual feedback (like transforms or shadows) if not explicitly mirrored via :focus or :focus-within. Additionally, character limits can be frustrating if the user only receives feedback upon reaching the limit.
+**Action:** Always mirror interactive hover styles for focus states and implement a "warning" threshold (e.g., 90%) for character counters to provide proactive user guidance.
