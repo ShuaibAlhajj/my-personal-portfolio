@@ -25,3 +25,7 @@
 ## 2026-05-22 - Performance-Conscious Scroll Enhancements
 **Learning:** Adding dynamic UI elements like Reading Progress Bars that respond to scroll events can impact performance if multiple listeners are added or if they aren't throttled.
 **Action:** Consolidate scroll-dependent logic into a single window listener and consider throttling for more complex calculations to ensure a smooth 60fps experience during high-velocity scrolling.
+
+## 2026-05-30 - Keyboard Focus Parity and Icon Accessibility
+**Learning:** Keyboard users often lack the same level of visual feedback as mouse users when interactive elements only have ':hover' states. Additionally, decorative icons can create noise for screen readers if not explicitly hidden.
+**Action:** Always pair ':hover' with ':focus' or ':focus-within' to ensure visual parity for keyboard navigation. Apply 'aria-hidden="true"' to all decorative icons, including those injected dynamically via JavaScript, to streamline the screen reader experience.
