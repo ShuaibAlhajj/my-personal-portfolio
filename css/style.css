@@ -435,6 +435,10 @@ img {
     color: #ef4444; /* Red color when limit is reached */
 }
 
+.char-counter.approaching-limit {
+    color: #fbbf24; /* Amber color when approaching limit */
+}
+
 /* Footer */
 footer {
     background-color: #020617; /* Very dark slate, almost black */
@@ -612,7 +616,7 @@ footer {
     font-weight: 600;
     transition: var(--transition);
     border: 1px solid transparent;
-    color: var(--white);
+    color: var(--secondary-color);
 }
 
 .form-feedback:not(:empty) {

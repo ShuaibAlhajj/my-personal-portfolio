@@ -25,3 +25,11 @@
 ## 2026-05-22 - Performance-Conscious Scroll Enhancements
 **Learning:** Adding dynamic UI elements like Reading Progress Bars that respond to scroll events can impact performance if multiple listeners are added or if they aren't throttled.
 **Action:** Consolidate scroll-dependent logic into a single window listener and consider throttling for more complex calculations to ensure a smooth 60fps experience during high-velocity scrolling.
+
+## 2026-05-23 - Progressive Character Counter Feedback
+**Learning:** A binary "limit reached" state on character counters can be abrupt for users typing long messages.
+**Action:** Implement an "approaching-limit" state (e.g., at 90% capacity) using a distinct color (like amber) to provide a gentle visual warning before the strict limit is hit.
+
+## 2026-05-24 - Secure and Rich Interactive Feedback
+**Learning:** Balancing rich UI feedback (like icons) with security (XSS prevention) when displaying user input in success messages requires careful DOM manipulation.
+**Action:** Use `innerHTML` for the static/icon structure of a feedback message but target specific sub-elements with `textContent` for any user-provided data to ensure safety without sacrificing visual polish.
