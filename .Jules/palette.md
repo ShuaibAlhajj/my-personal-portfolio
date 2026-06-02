@@ -25,3 +25,7 @@
 ## 2026-05-22 - Performance-Conscious Scroll Enhancements
 **Learning:** Adding dynamic UI elements like Reading Progress Bars that respond to scroll events can impact performance if multiple listeners are added or if they aren't throttled.
 **Action:** Consolidate scroll-dependent logic into a single window listener and consider throttling for more complex calculations to ensure a smooth 60fps experience during high-velocity scrolling.
+
+## 2026-05-23 - Progressive Feedback and Linked Accessibility
+**Learning:** Hard constraints like 'maxlength' are less frustrating when preceded by a visual "approaching limit" warning, and dynamic counters require explicit linking via 'aria-describedby' to be useful for screen reader users.
+**Action:** Implement an 'approaching-limit' state (e.g., at 90%) using a semantic '--warning-color', and always ensure dynamic UI updates (like spinners or checkmarks) explicitly include 'aria-hidden="true"' to maintain accessibility during state transitions.

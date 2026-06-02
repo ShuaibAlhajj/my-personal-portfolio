@@ -8,6 +8,7 @@
     --bg-color: #0f172a; /* Slate 900 - Deep Dark Background */
     --light-bg: #1e293b; /* Slate 800 - Slightly lighter for sections */
     --card-bg: #1e293b; /* Slate 800 for cards */
+    --warning-color: #fbbf24; /* Amber for warnings */
     --white: #ffffff;
     --gray: #94a3b8;
     --transition: all 0.3s ease;
@@ -429,6 +430,10 @@ img {
     text-align: right;
     margin-top: 5px;
     transition: var(--transition);
+}
+
+.char-counter.approaching-limit {
+    color: var(--warning-color);
 }
 
 .char-counter.limit-reached {
