@@ -25,3 +25,7 @@
 ## 2026-05-22 - Performance-Conscious Scroll Enhancements
 **Learning:** Adding dynamic UI elements like Reading Progress Bars that respond to scroll events can impact performance if multiple listeners are added or if they aren't throttled.
 **Action:** Consolidate scroll-dependent logic into a single window listener and consider throttling for more complex calculations to ensure a smooth 60fps experience during high-velocity scrolling.
+
+## 2026-06-07 - Proactive Feedback for Form Constraints
+**Learning:** Standard character counters only provide feedback at the limit, which can lead to frustrating "edit-back" loops for users who over-type.
+**Action:** Implement a 90% threshold "approaching-limit" warning state using a distinct color (e.g., amber) to give users a proactive visual cue before they hit a hard 'maxlength' constraint.
