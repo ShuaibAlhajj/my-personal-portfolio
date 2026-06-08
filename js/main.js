@@ -134,6 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const maxLength = messageArea.maxLength;
             charCounter.textContent = `${length} / ${maxLength}`;
             charCounter.classList.toggle('limit-reached', length >= maxLength);
+            charCounter.classList.toggle('approaching-limit', length >= maxLength * 0.9 && length < maxLength);
         };
 
         messageArea.addEventListener('input', updateCounter);
@@ -146,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const btn = contactForm.querySelector('button');
             const originalHTML = btn.innerHTML;
             
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Sending...';
             btn.disabled = true;
             if (feedback) feedback.textContent = '';
 
@@ -159,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 contactForm.reset();
                 if (charCounter) {
                     charCounter.textContent = `0 / ${messageArea.maxLength}`;
-                    charCounter.classList.remove('limit-reached');
+                    charCounter.classList.remove('limit-reached', 'approaching-limit');
                 }
                 btn.innerHTML = originalHTML;
                 btn.disabled = false;
@@ -174,16 +175,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const copyBtn = document.createElement('button');
         copyBtn.className = 'copy-btn';
         copyBtn.setAttribute('aria-label', 'Copy code to clipboard');
-        copyBtn.innerHTML = '<i class="far fa-copy"></i>';
+        copyBtn.innerHTML = '<i class="far fa-copy" aria-hidden="true"></i>';
         block.appendChild(copyBtn);
 
         copyBtn.addEventListener('click', () => {
             const code = block.querySelector('code').innerText.trim();
             navigator.clipboard.writeText(code).then(() => {
-                copyBtn.innerHTML = '<i class="fas fa-check"></i>';
+                copyBtn.innerHTML = '<i class="fas fa-check" aria-hidden="true"></i>';
                 copyBtn.classList.add('copied');
                 setTimeout(() => {
-                    copyBtn.innerHTML = '<i class="far fa-copy"></i>';
+                    copyBtn.innerHTML = '<i class="far fa-copy" aria-hidden="true"></i>';
                     copyBtn.classList.remove('copied');
                 }, 2000);
             });
