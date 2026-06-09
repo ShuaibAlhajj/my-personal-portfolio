@@ -134,6 +134,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const maxLength = messageArea.maxLength;
             charCounter.textContent = `${length} / ${maxLength}`;
             charCounter.classList.toggle('limit-reached', length >= maxLength);
+
+            // Add warning class when reaching 90% of limit
+            const threshold = maxLength * 0.9;
+            charCounter.classList.toggle('approaching-limit', length >= threshold && length < maxLength);
         };
 
         messageArea.addEventListener('input', updateCounter);
@@ -159,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 contactForm.reset();
                 if (charCounter) {
                     charCounter.textContent = `0 / ${messageArea.maxLength}`;
-                    charCounter.classList.remove('limit-reached');
+                    charCounter.classList.remove('limit-reached', 'approaching-limit');
                 }
                 btn.innerHTML = originalHTML;
                 btn.disabled = false;

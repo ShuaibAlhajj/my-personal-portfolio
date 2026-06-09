@@ -10,6 +10,7 @@
     --card-bg: #1e293b; /* Slate 800 for cards */
     --white: #ffffff;
     --gray: #94a3b8;
+    --warning-color: #fbbf24; /* Amber color for approaching limits */
     --transition: all 0.3s ease;
     --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.15); /* Darker shadow */
     --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
@@ -433,6 +434,10 @@ img {
 
 .char-counter.limit-reached {
     color: #ef4444; /* Red color when limit is reached */
+}
+
+.char-counter.approaching-limit {
+    color: var(--warning-color);
 }
 
 /* Footer */

@@ -161,18 +161,18 @@
         <div class="contact-wrapper">
           <div class="contact-info">
             <div class="info-item">
-              <i class="fas fa-envelope"></i>
+              <i class="fas fa-envelope" aria-hidden="true"></i>
               <a href="mailto:email@example.com" class="email-link">email@example.com</a>
               <button class="copy-email-btn" data-email="email@example.com" aria-label="Copy email address" title="Copy email address">
-                <i class="far fa-copy"></i>
+                <i class="far fa-copy" aria-hidden="true"></i>
               </button>
             </div>
             <div class="info-item">
-              <i class="fab fa-linkedin"></i>
+              <i class="fab fa-linkedin" aria-hidden="true"></i>
               <a href="#">LinkedIn Profile</a>
             </div>
             <div class="info-item">
-              <i class="fab fa-github"></i>
+              <i class="fab fa-github" aria-hidden="true"></i>
               <a href="#">GitHub Profile</a>
             </div>
           </div>
@@ -183,7 +183,7 @@
             <input type="email" id="email" placeholder="Your Email" required autocomplete="email" />
             <label for="message" class="sr-only">Your Message</label>
             <div class="textarea-wrapper">
-              <textarea id="message" placeholder="Your Message" rows="5" required maxlength="1000"></textarea>
+              <textarea id="message" placeholder="Your Message" rows="5" required maxlength="1000" aria-describedby="char-counter"></textarea>
               <div id="char-counter" class="char-counter" aria-live="polite">0 / 1000</div>
             </div>
             <button type="submit" class="btn btn-primary">Send Message</button>
