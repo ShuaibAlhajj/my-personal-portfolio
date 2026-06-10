@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const btn = contactForm.querySelector('button');
             const originalHTML = btn.innerHTML;
             
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Sending...';
             btn.disabled = true;
             if (feedback) feedback.textContent = '';
 
@@ -174,18 +174,25 @@ document.addEventListener('DOMContentLoaded', () => {
         const copyBtn = document.createElement('button');
         copyBtn.className = 'copy-btn';
         copyBtn.setAttribute('aria-label', 'Copy code to clipboard');
-        copyBtn.innerHTML = '<i class="far fa-copy"></i>';
+        copyBtn.innerHTML = '<i class="far fa-copy" aria-hidden="true"></i>';
         block.appendChild(copyBtn);
 
+        let isCopying = false;
         copyBtn.addEventListener('click', () => {
+            if (isCopying) return;
+            isCopying = true;
+
             const code = block.querySelector('code').innerText.trim();
             navigator.clipboard.writeText(code).then(() => {
-                copyBtn.innerHTML = '<i class="fas fa-check"></i>';
+                copyBtn.innerHTML = '<i class="fas fa-check" aria-hidden="true"></i>';
                 copyBtn.classList.add('copied');
                 setTimeout(() => {
-                    copyBtn.innerHTML = '<i class="far fa-copy"></i>';
+                    copyBtn.innerHTML = '<i class="far fa-copy" aria-hidden="true"></i>';
                     copyBtn.classList.remove('copied');
+                    isCopying = false;
                 }, 2000);
+            }).catch(() => {
+                isCopying = false;
             });
         });
     });
@@ -212,6 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const originalAriaLabel = copyEmailBtn.getAttribute('aria-label');
 
                 icon.className = 'fas fa-check';
+                icon.setAttribute('aria-hidden', 'true');
                 copyEmailBtn.classList.add('copied');
                 copyEmailBtn.setAttribute('aria-label', 'Email copied!');
 
@@ -221,6 +229,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     copyEmailBtn.setAttribute('aria-label', originalAriaLabel);
                     isCopying = false;
                 }, 2000);
+            }).catch(() => {
+                isCopying = false;
             });
         });
     }
