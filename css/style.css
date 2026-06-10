@@ -137,7 +137,8 @@ img {
 }
 
 .nav-links a:hover,
-.nav-links a.active {
+.nav-links a.active,
+.nav-links a:focus {
     color: var(--primary-color);
 }
 
@@ -261,10 +262,12 @@ img {
     border: 1px solid var(--border-color);
 }
 
-.skill-card:hover {
+.skill-card:hover,
+.skill-card:focus {
     transform: translateY(-10px);
     box-shadow: var(--shadow-hover);
     border-color: var(--primary-color);
+    outline: none;
 }
 
 .skill-card i {
@@ -306,7 +309,8 @@ img {
     cursor: pointer;
 }
 
-.project-card:hover {
+.project-card:hover,
+.project-card:focus-within {
     transform: translateY(-5px);
     box-shadow: var(--shadow-hover);
     border-color: var(--primary-color);
