@@ -133,6 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const length = messageArea.value.length;
             const maxLength = messageArea.maxLength;
             charCounter.textContent = `${length} / ${maxLength}`;
+            charCounter.classList.toggle('approaching-limit', length >= maxLength * 0.9 && length < maxLength);
             charCounter.classList.toggle('limit-reached', length >= maxLength);
         };
 
@@ -160,6 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (charCounter) {
                     charCounter.textContent = `0 / ${messageArea.maxLength}`;
                     charCounter.classList.remove('limit-reached');
+                    charCounter.classList.remove('approaching-limit');
                 }
                 btn.innerHTML = originalHTML;
                 btn.disabled = false;

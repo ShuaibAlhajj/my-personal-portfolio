@@ -183,7 +183,7 @@
             <input type="email" id="email" placeholder="Your Email" required autocomplete="email" />
             <label for="message" class="sr-only">Your Message</label>
             <div class="textarea-wrapper">
-              <textarea id="message" placeholder="Your Message" rows="5" required maxlength="1000"></textarea>
+              <textarea id="message" placeholder="Your Message" rows="5" required maxlength="1000" aria-describedby="char-counter"></textarea>
               <div id="char-counter" class="char-counter" aria-live="polite">0 / 1000</div>
             </div>
             <button type="submit" class="btn btn-primary">Send Message</button>

@@ -25,3 +25,7 @@
 ## 2026-05-22 - Performance-Conscious Scroll Enhancements
 **Learning:** Adding dynamic UI elements like Reading Progress Bars that respond to scroll events can impact performance if multiple listeners are added or if they aren't throttled.
 **Action:** Consolidate scroll-dependent logic into a single window listener and consider throttling for more complex calculations to ensure a smooth 60fps experience during high-velocity scrolling.
+
+## 2026-06-11 - Proactive Visual Feedback for Input Limits
+**Learning:** Hard character limits can be frustrating for users if they aren't warned before reaching them. Accessibility for these counters requires explicit association with the input.
+**Action:** Implement a 90% threshold for "approaching limit" visual warnings using a distinct color (e.g., Amber) and ensure the input field uses 'aria-describedby' to link to the live-updating counter.
