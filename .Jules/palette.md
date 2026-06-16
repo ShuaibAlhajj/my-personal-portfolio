@@ -25,3 +25,7 @@
 ## 2026-05-22 - Performance-Conscious Scroll Enhancements
 **Learning:** Adding dynamic UI elements like Reading Progress Bars that respond to scroll events can impact performance if multiple listeners are added or if they aren't throttled.
 **Action:** Consolidate scroll-dependent logic into a single window listener and consider throttling for more complex calculations to ensure a smooth 60fps experience during high-velocity scrolling.
+
+## 2026-06-16 - Interactive Feedback Parity and Icon Accessibility
+**Learning:** Keyboard users should receive the same visual feedback as mouse users for interactive components. Using ':focus-within' on parent containers and ':focus-visible' on interactive elements allows mirroring of hover-triggered CSS transforms and shadows without polluting the mouse-user experience with focus rings. Additionally, bulk-applying 'aria-hidden="true"' to decorative icons across subpages is essential for maintaining a clean accessibility tree.
+**Action:** Always pair hover-based animations with ':focus-within' or ':focus-visible' selectors and audit subpages for decorative icons that lack explicit aria-hidden attributes.
