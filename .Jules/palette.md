@@ -25,3 +25,7 @@
 ## 2026-05-22 - Performance-Conscious Scroll Enhancements
 **Learning:** Adding dynamic UI elements like Reading Progress Bars that respond to scroll events can impact performance if multiple listeners are added or if they aren't throttled.
 **Action:** Consolidate scroll-dependent logic into a single window listener and consider throttling for more complex calculations to ensure a smooth 60fps experience during high-velocity scrolling.
+
+## 2026-06-09 - Proactive Input Constraint Feedback
+**Learning:** Strict character limits can be frustrating if users only discover them when they are blocked from typing. Providing a visual warning (e.g., amber color) at 90% capacity prepares users for the approaching limit.
+**Action:** Implement multi-stage visual feedback for character counters and link them to inputs using `aria-describedby` to ensure both visual and assistive technology users receive timely feedback.
