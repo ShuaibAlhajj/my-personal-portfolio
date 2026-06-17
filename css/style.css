@@ -14,6 +14,7 @@
     --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.15); /* Darker shadow */
     --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
     --border-color: #334155; /* Slate 700 for borders */
+    --warning-color: #fbbf24; /* Amber for warning states */
 }
 
 * {
@@ -261,7 +262,8 @@ img {
     border: 1px solid var(--border-color);
 }
 
-.skill-card:hover {
+.skill-card:hover,
+.skill-card:focus-within {
     transform: translateY(-10px);
     box-shadow: var(--shadow-hover);
     border-color: var(--primary-color);
@@ -306,7 +308,8 @@ img {
     cursor: pointer;
 }
 
-.project-card:hover {
+.project-card:hover,
+.project-card:focus-within {
     transform: translateY(-5px);
     box-shadow: var(--shadow-hover);
     border-color: var(--primary-color);
@@ -433,6 +436,10 @@ img {
 
 .char-counter.limit-reached {
     color: #ef4444; /* Red color when limit is reached */
+}
+
+.char-counter.approaching-limit {
+    color: var(--warning-color);
 }
 
 /* Footer */
