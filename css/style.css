@@ -6,6 +6,7 @@
     --secondary-color: #f1f5f9; /* Off-white for headings */
     --text-color: #cbd5e1; /* Slate 300 for body text */
     --bg-color: #0f172a; /* Slate 900 - Deep Dark Background */
+    --warning-color: #fbbf24; /* Amber 400 - Warning for counters */
     --light-bg: #1e293b; /* Slate 800 - Slightly lighter for sections */
     --card-bg: #1e293b; /* Slate 800 for cards */
     --white: #ffffff;
@@ -429,6 +430,10 @@ img {
     text-align: right;
     margin-top: 5px;
     transition: var(--transition);
+}
+
+.char-counter.approaching-limit {
+    color: var(--warning-color);
 }
 
 .char-counter.limit-reached {
