@@ -25,3 +25,7 @@
 ## 2026-05-22 - Performance-Conscious Scroll Enhancements
 **Learning:** Adding dynamic UI elements like Reading Progress Bars that respond to scroll events can impact performance if multiple listeners are added or if they aren't throttled.
 **Action:** Consolidate scroll-dependent logic into a single window listener and consider throttling for more complex calculations to ensure a smooth 60fps experience during high-velocity scrolling.
+
+## 2026-06-18 - Decorative Icon Accessibility in Sub-Pages
+**Learning:** In projects with multiple sub-pages, decorative icon patterns (like Font Awesome icons in gallery placeholders) may be missed during initial accessibility audits if the focus is primarily on the main landing page.
+**Action:** Use recursive search and replace (e.g., `sed` with capture groups) to apply `aria-hidden="true"` to all decorative icons across the entire project structure, ensuring consistent accessibility for screen reader users on all pages.
