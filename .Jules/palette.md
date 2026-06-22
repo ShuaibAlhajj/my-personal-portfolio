@@ -25,3 +25,7 @@
 ## 2026-05-22 - Performance-Conscious Scroll Enhancements
 **Learning:** Adding dynamic UI elements like Reading Progress Bars that respond to scroll events can impact performance if multiple listeners are added or if they aren't throttled.
 **Action:** Consolidate scroll-dependent logic into a single window listener and consider throttling for more complex calculations to ensure a smooth 60fps experience during high-velocity scrolling.
+
+## 2026-06-22 - Focus Parity and Cross-Page Navigation
+**Learning:** Keyboard users expect interactive elements to provide the same visual feedback as hover states. Using `:focus-within` on card containers and `:focus-visible` on buttons ensures this parity. Additionally, site-wide utility components like "Back to Top" buttons must manage focus restoration correctly across different page structures (e.g., landing page vs. subpages) by using fallback targets.
+**Action:** Implement `:focus-within` for interactive cards and `:focus-visible` for buttons. Use a fallback focus mechanism (`#home || #main-content`) in shared navigation scripts to ensure focus restoration works regardless of the page's primary section ID.
