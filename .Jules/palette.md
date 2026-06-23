@@ -25,3 +25,7 @@
 ## 2026-05-22 - Performance-Conscious Scroll Enhancements
 **Learning:** Adding dynamic UI elements like Reading Progress Bars that respond to scroll events can impact performance if multiple listeners are added or if they aren't throttled.
 **Action:** Consolidate scroll-dependent logic into a single window listener and consider throttling for more complex calculations to ensure a smooth 60fps experience during high-velocity scrolling.
+
+## 2026-05-23 - Keyboard Navigation Parity for Interactive Cards
+**Learning:** Decorative "lift" and shadow animations on hover are often missed by keyboard users, leading to a static and less engaging experience for those not using a mouse.
+**Action:** Use `:focus-visible` on direct interactive elements (like `.skill-card`) and `:focus-within` on containers with nested links (like `.project-card`) to mirror hover effects, ensuring visual feedback parity across all input methods while avoiding unnecessary focus indicators for mouse clicks.
