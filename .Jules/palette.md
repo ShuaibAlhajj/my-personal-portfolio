@@ -25,3 +25,11 @@
 ## 2026-05-22 - Performance-Conscious Scroll Enhancements
 **Learning:** Adding dynamic UI elements like Reading Progress Bars that respond to scroll events can impact performance if multiple listeners are added or if they aren't throttled.
 **Action:** Consolidate scroll-dependent logic into a single window listener and consider throttling for more complex calculations to ensure a smooth 60fps experience during high-velocity scrolling.
+
+## 2026-06-26 - Keyboard Focus Parity for Interactive Cards
+**Learning:** Visual delight features like 'transform' and 'box-shadow' on hover are often missed by keyboard users, making the interface feel static and less responsive to their input.
+**Action:** Always mirror ':hover' effects using ':focus-visible' for direct interactive elements and ':focus-within' for interactive containers (like cards containing links) to ensure visual parity and a consistent sense of "delight" across all input methods.
+
+## 2026-06-26 - Synchronized Multi-Modal Feedback
+**Learning:** Tooltips (via 'title' attribute) and screen reader labels (via 'aria-label') can become desynchronized during dynamic state changes (e.g., "Copy" -> "Copied!"), providing conflicting information to different users.
+**Action:** When updating UI feedback in JavaScript, ensure all descriptive attributes ('aria-label', 'title', etc.) are updated in unison to provide a consistent experience for both sighted mouse users and screen reader users.
