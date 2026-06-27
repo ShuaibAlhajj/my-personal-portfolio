@@ -123,6 +123,14 @@ img {
     font-weight: 700;
     color: var(--primary-color);
     text-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+    transition: var(--transition);
+    display: inline-block;
+}
+
+.logo:hover,
+.logo:focus-visible {
+    transform: scale(1.05);
+    text-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
 }
 
 .nav-links {
@@ -137,6 +145,7 @@ img {
 }
 
 .nav-links a:hover,
+.nav-links a:focus-visible,
 .nav-links a.active {
     color: var(--primary-color);
 }
@@ -261,10 +270,12 @@ img {
     border: 1px solid var(--border-color);
 }
 
-.skill-card:hover {
+.skill-card:hover,
+.skill-card:focus-visible {
     transform: translateY(-10px);
     box-shadow: var(--shadow-hover);
     border-color: var(--primary-color);
+    outline: 2px solid transparent;
 }
 
 .skill-card i {
@@ -306,7 +317,8 @@ img {
     cursor: pointer;
 }
 
-.project-card:hover {
+.project-card:hover,
+.project-card:focus-within {
     transform: translateY(-5px);
     box-shadow: var(--shadow-hover);
     border-color: var(--primary-color);
