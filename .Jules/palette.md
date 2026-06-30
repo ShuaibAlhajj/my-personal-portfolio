@@ -25,3 +25,7 @@
 ## 2026-05-22 - Performance-Conscious Scroll Enhancements
 **Learning:** Adding dynamic UI elements like Reading Progress Bars that respond to scroll events can impact performance if multiple listeners are added or if they aren't throttled.
 **Action:** Consolidate scroll-dependent logic into a single window listener and consider throttling for more complex calculations to ensure a smooth 60fps experience during high-velocity scrolling.
+
+## 2024-06-30 - Focus-State Parity and Programmatic UI Association
+**Learning:** Hover animations on complex interactive containers (like project cards) are often omitted for keyboard users, leading to a diminished "delight" experience. Additionally, existing UI elements like character counters may function visually but remain invisible to screen readers if not programmatically linked.
+**Action:** Always mirror hover transforms and shadows on `:focus-visible` and `:focus-within` for interactive elements. Ensure visual feedback elements are associated with their controls using `aria-describedby` to provide immediate context for assistive technology.
