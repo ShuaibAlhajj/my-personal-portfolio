@@ -25,3 +25,7 @@
 ## 2026-05-22 - Performance-Conscious Scroll Enhancements
 **Learning:** Adding dynamic UI elements like Reading Progress Bars that respond to scroll events can impact performance if multiple listeners are added or if they aren't throttled.
 **Action:** Consolidate scroll-dependent logic into a single window listener and consider throttling for more complex calculations to ensure a smooth 60fps experience during high-velocity scrolling.
+
+## 2026-07-09 - Safe Restoration of Contextual Tooltips
+**Learning:** When using JavaScript to provide temporary success feedback (like changing a button's 'title' attribute), blindly resetting the attribute to a captured 'originalTitle' variable can result in 'title="null"' if the attribute was initially absent.
+**Action:** Always check for the existence of the original attribute value before restoration. Use 'removeAttribute()' if the original value was null/undefined to ensure the DOM remains clean and avoid broken "null" tooltips in the browser.
