@@ -25,3 +25,7 @@
 ## 2026-05-22 - Performance-Conscious Scroll Enhancements
 **Learning:** Adding dynamic UI elements like Reading Progress Bars that respond to scroll events can impact performance if multiple listeners are added or if they aren't throttled.
 **Action:** Consolidate scroll-dependent logic into a single window listener and consider throttling for more complex calculations to ensure a smooth 60fps experience during high-velocity scrolling.
+
+## 2026-07-11 - Cohesive Interactive Feedback and Focus Management
+**Learning:** In interactive interfaces, hover effects are often prioritized over focus and disabled states, leaving keyboard users and those interacting with async forms without clear visual cues.
+**Action:** Mirror hover transforms and shadows using ':focus-visible' for interactive elements and ':focus-within' for container-based links (like cards) to ensure focus parity. Additionally, implement a global '.btn:disabled' rule that resets transforms and shadows while providing clear visual feedback (opacity, not-allowed cursor) to communicate state changes effectively.
