@@ -137,6 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         messageArea.addEventListener('input', updateCounter);
+        updateCounter(); // Initialize counter on load
     }
 
     if (contactForm) {
@@ -263,4 +264,16 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Move focus to target element on page load if hash exists
+    if (window.location.hash) {
+        const hash = window.location.hash;
+        const targetElement = document.querySelector(hash);
+        if (targetElement) {
+            // Short delay to ensure browser's default scroll has finished
+            setTimeout(() => {
+                targetElement.focus();
+            }, 100);
+        }
+    }
 });
