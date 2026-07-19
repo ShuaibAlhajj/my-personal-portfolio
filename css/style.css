@@ -261,10 +261,12 @@ img {
     border: 1px solid var(--border-color);
 }
 
-.skill-card:hover {
+.skill-card:hover,
+.skill-card:focus-visible {
     transform: translateY(-10px);
     box-shadow: var(--shadow-hover);
     border-color: var(--primary-color);
+    outline: none;
 }
 
 .skill-card i {
@@ -306,10 +308,12 @@ img {
     cursor: pointer;
 }
 
-.project-card:hover {
+.project-card:hover,
+.project-card:focus-within {
     transform: translateY(-5px);
     box-shadow: var(--shadow-hover);
     border-color: var(--primary-color);
+    outline: none;
 }
 
 .project-info {
@@ -429,6 +433,10 @@ img {
     text-align: right;
     margin-top: 5px;
     transition: var(--transition);
+}
+
+.char-counter.warning {
+    color: #f59e0b; /* Amber color when close to limit */
 }
 
 .char-counter.limit-reached {

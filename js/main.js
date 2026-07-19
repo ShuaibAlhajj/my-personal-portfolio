@@ -133,10 +133,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const length = messageArea.value.length;
             const maxLength = messageArea.maxLength;
             charCounter.textContent = `${length} / ${maxLength}`;
+            charCounter.classList.toggle('warning', length >= maxLength * 0.9 && length < maxLength);
             charCounter.classList.toggle('limit-reached', length >= maxLength);
         };
 
         messageArea.addEventListener('input', updateCounter);
+        // Call immediately on load to handle pre-filled forms/restores
+        updateCounter();
     }
 
     if (contactForm) {
@@ -159,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 contactForm.reset();
                 if (charCounter) {
                     charCounter.textContent = `0 / ${messageArea.maxLength}`;
-                    charCounter.classList.remove('limit-reached');
+                    charCounter.classList.remove('warning', 'limit-reached');
                 }
                 btn.innerHTML = originalHTML;
                 btn.disabled = false;
