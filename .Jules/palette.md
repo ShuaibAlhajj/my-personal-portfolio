@@ -25,3 +25,7 @@
 ## 2026-05-22 - Performance-Conscious Scroll Enhancements
 **Learning:** Adding dynamic UI elements like Reading Progress Bars that respond to scroll events can impact performance if multiple listeners are added or if they aren't throttled.
 **Action:** Consolidate scroll-dependent logic into a single window listener and consider throttling for more complex calculations to ensure a smooth 60fps experience during high-velocity scrolling.
+
+## 2026-07-19 - Keyboard Focus Parity and Capacity Indicators
+**Learning:** Interactive grid layouts using hover animations can exclude keyboard and screen reader users if focus state styling does not mirror the hover states exactly. Furthermore, text area capacity limits need a warning state prior to truncation/red hard-stops.
+**Action:** Use `:focus-visible` and `:focus-within` to mirror card-hover transforms and glow borders, and introduce an intermediate 'warning' CSS class at 90%+ input capacity to provide gentle visual guidance before blocking input.
