@@ -25,3 +25,7 @@
 ## 2026-05-22 - Performance-Conscious Scroll Enhancements
 **Learning:** Adding dynamic UI elements like Reading Progress Bars that respond to scroll events can impact performance if multiple listeners are added or if they aren't throttled.
 **Action:** Consolidate scroll-dependent logic into a single window listener and consider throttling for more complex calculations to ensure a smooth 60fps experience during high-velocity scrolling.
+
+## 2026-07-20 - Synchronized Label and Tooltip Copy Feedback
+**Learning:** Interactive copy actions should synchronize visual/non-visual updates (both `title` and `aria-label`) so both sighted mouse/touch users and screen reader users receive uniform success feedback.
+**Action:** Cache both original attributes prior to copying and restore them cleanly, handling potential null returns defensively.

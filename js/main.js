@@ -222,15 +222,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 const icon = copyEmailBtn.querySelector('i');
                 const originalIconClass = icon.className;
                 const originalAriaLabel = copyEmailBtn.getAttribute('aria-label');
+                const originalTitle = copyEmailBtn.getAttribute('title');
 
                 icon.className = 'fas fa-check';
                 copyEmailBtn.classList.add('copied');
                 copyEmailBtn.setAttribute('aria-label', 'Email copied!');
+                copyEmailBtn.setAttribute('title', 'Email copied!');
 
                 setTimeout(() => {
                     icon.className = originalIconClass;
                     copyEmailBtn.classList.remove('copied');
-                    copyEmailBtn.setAttribute('aria-label', originalAriaLabel);
+                    if (originalAriaLabel !== null) {
+                        copyEmailBtn.setAttribute('aria-label', originalAriaLabel);
+                    } else {
+                        copyEmailBtn.removeAttribute('aria-label');
+                    }
+                    if (originalTitle !== null) {
+                        copyEmailBtn.setAttribute('title', originalTitle);
+                    } else {
+                        copyEmailBtn.removeAttribute('title');
+                    }
                     isCopying = false;
                 }, 2000);
             }).catch(() => {
