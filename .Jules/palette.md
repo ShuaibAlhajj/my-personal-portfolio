@@ -25,3 +25,7 @@
 ## 2026-05-22 - Performance-Conscious Scroll Enhancements
 **Learning:** Adding dynamic UI elements like Reading Progress Bars that respond to scroll events can impact performance if multiple listeners are added or if they aren't throttled.
 **Action:** Consolidate scroll-dependent logic into a single window listener and consider throttling for more complex calculations to ensure a smooth 60fps experience during high-velocity scrolling.
+
+## 2026-05-23 - Progressive UX Feedback and State Restorations
+**Learning:** Hard limits on text input fields can disrupt typing abruptly if users aren't forewarned, and browser-restored forms can mismatch initial counter labels.
+**Action:** Implement proportional warning classes (e.g., at >= 90% capacity) with high-contrast indicator colors, invoke handlers immediately on DOM load to sync browser-cached content, and ensure resets clear both state classes and values completely.
