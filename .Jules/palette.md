@@ -25,3 +25,7 @@
 ## 2026-05-22 - Performance-Conscious Scroll Enhancements
 **Learning:** Adding dynamic UI elements like Reading Progress Bars that respond to scroll events can impact performance if multiple listeners are added or if they aren't throttled.
 **Action:** Consolidate scroll-dependent logic into a single window listener and consider throttling for more complex calculations to ensure a smooth 60fps experience during high-velocity scrolling.
+
+## 2026-07-22 - Dual Tooltip and ARIA Accessibility Sync
+**Learning:** When adding click feedback (such as "Email copied!") on icon buttons, relying solely on `aria-label` ignores screen reader users' visual hover experience (tooltips via the native `title` attribute), while relying only on `title` fails standard screen reader specifications.
+**Action:** Synchronize both attributes concurrently in the interaction loop and ensure the `title` attribute is safely restored or removed based on its initial presence.
