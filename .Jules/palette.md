@@ -25,3 +25,7 @@
 ## 2026-05-22 - Performance-Conscious Scroll Enhancements
 **Learning:** Adding dynamic UI elements like Reading Progress Bars that respond to scroll events can impact performance if multiple listeners are added or if they aren't throttled.
 **Action:** Consolidate scroll-dependent logic into a single window listener and consider throttling for more complex calculations to ensure a smooth 60fps experience during high-velocity scrolling.
+
+## 2026-07-23 - Focus Parity for Custom Hover Animations
+**Learning:** Complex hover transformations and shadows make mouse experiences delightful, but ignore keyboard users if focus indicators are left default.
+**Action:** Always pair custom hover rules with `:focus-visible` or `:focus-within` on the parent to ensure keyboard navigation feels just as fluid and polished.
