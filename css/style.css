@@ -89,7 +89,8 @@ img {
     color: #0f172a; /* Dark text on bright button for contrast */
 }
 
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-primary:focus-visible {
     background-color: var(--primary-hover);
     transform: translateY(-2px);
     box-shadow: 0 0 15px rgba(56, 189, 248, 0.4); /* Glow effect */
@@ -261,7 +262,8 @@ img {
     border: 1px solid var(--border-color);
 }
 
-.skill-card:hover {
+.skill-card:hover,
+.skill-card:focus-visible {
     transform: translateY(-10px);
     box-shadow: var(--shadow-hover);
     border-color: var(--primary-color);
@@ -306,7 +308,8 @@ img {
     cursor: pointer;
 }
 
-.project-card:hover {
+.project-card:hover,
+.project-card:focus-within {
     transform: translateY(-5px);
     box-shadow: var(--shadow-hover);
     border-color: var(--primary-color);
@@ -560,11 +563,13 @@ footer {
 }
 
 .copy-btn { position: absolute; top: 10px; right: 10px; background: rgba(255, 255, 255, 0.1); border: 1px solid var(--border-color); border-radius: 4px; color: var(--gray); padding: 5px 8px; cursor: pointer; transition: var(--transition); font-size: 0.9rem; }
-.copy-btn:hover { background: var(--primary-color); color: var(--bg-color); border-color: var(--primary-color); }
+.copy-btn:hover,
+.copy-btn:focus-visible { background: var(--primary-color); color: var(--bg-color); border-color: var(--primary-color); }
 .copy-btn.copied { color: var(--primary-color); border-color: var(--primary-color); background: rgba(56, 189, 248, 0.1); }
 
 .copy-email-btn { background: none; border: none; color: var(--gray); cursor: pointer; font-size: 1rem; padding: 5px; transition: var(--transition); display: inline-flex; align-items: center; justify-content: center; }
-.copy-email-btn:hover { color: var(--primary-color); transform: scale(1.1); }
+.copy-email-btn:hover,
+.copy-email-btn:focus-visible { color: var(--primary-color); transform: scale(1.1); }
 .copy-email-btn.copied { color: var(--primary-color); }
 .email-link:hover { color: var(--primary-color); text-decoration: underline; }
 
@@ -625,4 +630,5 @@ footer {
 /* Back to Top Button */
 #back-to-top { position: fixed; bottom: 30px; right: 30px; width: 45px; height: 45px; background: var(--primary-color); color: var(--bg-color); border: none; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; box-shadow: var(--shadow); transition: var(--transition); z-index: 999; opacity: 0; visibility: hidden; }
 #back-to-top.active { opacity: 1; visibility: visible; }
-#back-to-top:hover { background: var(--primary-hover); transform: translateY(-5px); box-shadow: var(--shadow-hover); }
+#back-to-top:hover,
+#back-to-top:focus-visible { background: var(--primary-hover); transform: translateY(-5px); box-shadow: var(--shadow-hover); }
