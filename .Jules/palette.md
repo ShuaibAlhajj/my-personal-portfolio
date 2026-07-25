@@ -25,3 +25,7 @@
 ## 2026-05-22 - Performance-Conscious Scroll Enhancements
 **Learning:** Adding dynamic UI elements like Reading Progress Bars that respond to scroll events can impact performance if multiple listeners are added or if they aren't throttled.
 **Action:** Consolidate scroll-dependent logic into a single window listener and consider throttling for more complex calculations to ensure a smooth 60fps experience during high-velocity scrolling.
+
+## 2026-07-25 - Progressive Form Validation Feedback & Keyboard Focus Parity
+**Learning:** Hard-stop input limits can frustrate users if they reach them without warning, and lack of keyboard focus indicators impairs accessibility.
+**Action:** Implement an interactive "warning" class styled in amber at >= 90% capacity to notify users gently before they hit character limits, and use `:focus-visible` or `:focus-within` on custom interactive elements (like cards and primary buttons) to mirror hover state transitions precisely.
