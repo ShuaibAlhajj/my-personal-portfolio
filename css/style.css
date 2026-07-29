@@ -89,7 +89,8 @@ img {
     color: #0f172a; /* Dark text on bright button for contrast */
 }
 
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-primary:focus-visible {
     background-color: var(--primary-hover);
     transform: translateY(-2px);
     box-shadow: 0 0 15px rgba(56, 189, 248, 0.4); /* Glow effect */
@@ -177,6 +178,14 @@ img {
     }
 }
 
+/* Disabled button states for feedback during async submissions */
+.btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
 /* Hero Section */
 .hero {
     height: 100vh;
@@ -261,7 +270,8 @@ img {
     border: 1px solid var(--border-color);
 }
 
-.skill-card:hover {
+.skill-card:hover,
+.skill-card:focus-visible {
     transform: translateY(-10px);
     box-shadow: var(--shadow-hover);
     border-color: var(--primary-color);
@@ -306,7 +316,8 @@ img {
     cursor: pointer;
 }
 
-.project-card:hover {
+.project-card:hover,
+.project-card:focus-within {
     transform: translateY(-5px);
     box-shadow: var(--shadow-hover);
     border-color: var(--primary-color);

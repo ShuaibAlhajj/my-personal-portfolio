@@ -25,3 +25,7 @@
 ## 2026-05-22 - Performance-Conscious Scroll Enhancements
 **Learning:** Adding dynamic UI elements like Reading Progress Bars that respond to scroll events can impact performance if multiple listeners are added or if they aren't throttled.
 **Action:** Consolidate scroll-dependent logic into a single window listener and consider throttling for more complex calculations to ensure a smooth 60fps experience during high-velocity scrolling.
+
+## 2026-07-29 - High-Fidelity Keyboard Focus Parity and Button State Guarding
+**Learning:** Providing consistent interaction feedback across input methods requires hover and keyboard focus indicators to share visual styling. Specifically, transforms and shadow transitions configured on interactive elements (like cards and primary buttons) must have a matched focus state (via `:focus-visible` or `:focus-within`) to keep the keyboard experience parity. Furthermore, during async visual feedback (like disabled submit state in forms), button transforms and glowing shadows should be strictly suppressed via `:disabled` rule with `!important` overrides to prevent confusing interaction feedback.
+**Action:** Always pair `:hover` with `:focus-visible` and `:focus-within` for visual transformation parity on cards/buttons, and provide a comprehensive `.btn:disabled` state that resets transforms and box-shadows with `!important` to prevent active hover responses on disabled controls.
