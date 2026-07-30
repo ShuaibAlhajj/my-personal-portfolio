@@ -25,3 +25,7 @@
 ## 2026-05-22 - Performance-Conscious Scroll Enhancements
 **Learning:** Adding dynamic UI elements like Reading Progress Bars that respond to scroll events can impact performance if multiple listeners are added or if they aren't throttled.
 **Action:** Consolidate scroll-dependent logic into a single window listener and consider throttling for more complex calculations to ensure a smooth 60fps experience during high-velocity scrolling.
+
+## 2026-07-30 - Keyboard Interactivity Parity and Async Button State Guarding
+**Learning:** Keyboard users lose critical visual cues when hover states on interactive cards (`.skill-card`, `.project-card`) or buttons are not mirrored as focus indicators. Additionally, during asynchronous states, disabled buttons must have animations overridden to prevent layout jumps or inconsistent focus styles.
+**Action:** Always pair `:hover` transition styles with `:focus-visible` and `:focus-within` for full keyboard parity. Use `:disabled` with `!important` overrides for transform/box-shadow on buttons to prevent layout shifting on active focus during processing.
