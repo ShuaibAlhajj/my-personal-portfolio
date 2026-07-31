@@ -25,3 +25,7 @@
 ## 2026-05-22 - Performance-Conscious Scroll Enhancements
 **Learning:** Adding dynamic UI elements like Reading Progress Bars that respond to scroll events can impact performance if multiple listeners are added or if they aren't throttled.
 **Action:** Consolidate scroll-dependent logic into a single window listener and consider throttling for more complex calculations to ensure a smooth 60fps experience during high-velocity scrolling.
+
+## 2026-05-23 - Focus Parity and State Visual Synchronization
+**Learning:** Keyboard focus transitions should visually match hover transformations to establish functional parity. Additionally, temporary feedback loops (like Clipboard operations) must synchronize tooltip title attributes alongside ARIA dynamic labels to prevent visual and screen reader state desynchronization.
+**Action:** Explicitly mirror element hover properties using `:focus-visible` or `:focus-within`, and ensure tooltip 'title' attributes are temporarily updated and accurately restored in sync with ARIA feedback loops.
