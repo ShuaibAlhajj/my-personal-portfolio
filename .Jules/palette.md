@@ -25,3 +25,7 @@
 ## 2026-05-22 - Performance-Conscious Scroll Enhancements
 **Learning:** Adding dynamic UI elements like Reading Progress Bars that respond to scroll events can impact performance if multiple listeners are added or if they aren't throttled.
 **Action:** Consolidate scroll-dependent logic into a single window listener and consider throttling for more complex calculations to ensure a smooth 60fps experience during high-velocity scrolling.
+
+## 2026-08-02 - Keyboard Focus Parity for Interactive Elements
+**Learning:** Hover states often provide visual delight (transforms, shadows, and borders) that keyboard-only users miss, creating an unequal user experience.
+**Action:** Always maintain focus parity in CSS by coupling `:hover` with `:focus-visible` or `:focus-within` selectors to ensure keyboard navigation mirrors the delightful visual cues of mouse interactions.
