@@ -25,3 +25,7 @@
 ## 2026-05-22 - Performance-Conscious Scroll Enhancements
 **Learning:** Adding dynamic UI elements like Reading Progress Bars that respond to scroll events can impact performance if multiple listeners are added or if they aren't throttled.
 **Action:** Consolidate scroll-dependent logic into a single window listener and consider throttling for more complex calculations to ensure a smooth 60fps experience during high-velocity scrolling.
+
+## 2026-08-03 - Keyboard Focus Parity and Link Accessible Names
+**Learning:** Keyboard focus states should have visual parity with hover states to ensure keyboard users have the same rich interactive experience. Additionally, Playwright/automated test locators must account for full concatenated text of interactive container elements (like cards acting as links) since all nested text contributes to the accessible name.
+**Action:** Map `:focus-visible` and `:focus-within` to existing `:hover` style rules to guarantee parity without duplicating code, and construct locators targeting parent elements using robust CSS class names rather than partial text names when elements contain nested text.
