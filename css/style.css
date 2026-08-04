@@ -95,6 +95,13 @@ img {
     box-shadow: 0 0 15px rgba(56, 189, 248, 0.4); /* Glow effect */
 }
 
+.btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
 /* Navbar */
 .navbar {
     background-color: rgba(15, 23, 42, 0.95); /* Semi-transparent dark bg */

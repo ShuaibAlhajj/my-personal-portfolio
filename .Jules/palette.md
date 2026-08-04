@@ -25,3 +25,7 @@
 ## 2026-05-22 - Performance-Conscious Scroll Enhancements
 **Learning:** Adding dynamic UI elements like Reading Progress Bars that respond to scroll events can impact performance if multiple listeners are added or if they aren't throttled.
 **Action:** Consolidate scroll-dependent logic into a single window listener and consider throttling for more complex calculations to ensure a smooth 60fps experience during high-velocity scrolling.
+
+## 2026-08-04 - Visual Feedback and Interactivity Lock for Async Form Submissions
+**Learning:** Simply disabling form buttons programmatically during async tasks is insufficient for user orientation if they still trigger pointer feedback (hover transforms/shadows) or retain their full opacity, leading to visual confusion.
+**Action:** Implement robust `.btn:disabled` CSS rules with reduced opacity, a `not-allowed` cursor, and explicit `!important` resets on transforms and shadows to cleanly lock interactive feedback during async states.
