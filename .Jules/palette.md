@@ -25,3 +25,7 @@
 ## 2026-05-22 - Performance-Conscious Scroll Enhancements
 **Learning:** Adding dynamic UI elements like Reading Progress Bars that respond to scroll events can impact performance if multiple listeners are added or if they aren't throttled.
 **Action:** Consolidate scroll-dependent logic into a single window listener and consider throttling for more complex calculations to ensure a smooth 60fps experience during high-velocity scrolling.
+
+## 2026-05-23 - Synchronizing Multi-channel Feedback in Micro-interactions
+**Learning:** When enhancing interactive actions like "Copy to Clipboard," synchronizing only the `aria-label` without updating the `title` attribute can cause a discrepancy between screen reader announcements and mouse hover tooltips. Furthermore, restoring elements to original states must explicitly handle cases where an attribute might be initially absent to prevent setting empty or null attribute values.
+**Action:** Always synchronize `title` attributes with their updated `aria-label` success feedback, and include explicit null checks during restoration (`originalValue !== null`) to ensure graceful and robust attribute rollback.
