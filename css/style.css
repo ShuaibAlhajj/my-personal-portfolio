@@ -435,6 +435,10 @@ img {
     color: #ef4444; /* Red color when limit is reached */
 }
 
+.char-counter.warning {
+    color: #f59e0b; /* Amber color when warning state is active */
+}
+
 /* Footer */
 footer {
     background-color: #020617; /* Very dark slate, almost black */
