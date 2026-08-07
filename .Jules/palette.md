@@ -25,3 +25,7 @@
 ## 2026-05-22 - Performance-Conscious Scroll Enhancements
 **Learning:** Adding dynamic UI elements like Reading Progress Bars that respond to scroll events can impact performance if multiple listeners are added or if they aren't throttled.
 **Action:** Consolidate scroll-dependent logic into a single window listener and consider throttling for more complex calculations to ensure a smooth 60fps experience during high-velocity scrolling.
+
+## 2026-08-07 - Interactive Focus Parity and Button Disabled Styling
+**Learning:** Interactive CSS elements with rich `:hover` animations or transforms can leave keyboard/screen-reader users with a stale, non-interactive visual experience if those states are not explicitly mirrored with `:focus-visible` or `:focus-within`. Additionally, visual cues like `cursor: not-allowed` and resets are critical for disabled action buttons in async states.
+**Action:** Pair every `:hover` transform or shadow rule with `:focus-visible` (or `:focus-within` for composite elements like `.project-card`), and define explicit `.btn:disabled` overrides with `!important` flags to guarantee proper visual feedback when forms are processing.
