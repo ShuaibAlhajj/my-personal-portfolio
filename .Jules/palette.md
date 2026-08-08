@@ -29,3 +29,7 @@
 ## 2026-08-07 - Interactive Focus Parity and Button Disabled Styling
 **Learning:** Interactive CSS elements with rich `:hover` animations or transforms can leave keyboard/screen-reader users with a stale, non-interactive visual experience if those states are not explicitly mirrored with `:focus-visible` or `:focus-within`. Additionally, visual cues like `cursor: not-allowed` and resets are critical for disabled action buttons in async states.
 **Action:** Pair every `:hover` transform or shadow rule with `:focus-visible` (or `:focus-within` for composite elements like `.project-card`), and define explicit `.btn:disabled` overrides with `!important` flags to guarantee proper visual feedback when forms are processing.
+
+## 2026-08-08 - Accessible Warning States and Initialization on Text Input
+**Learning:** Dynamic text inputs with hard limits can feel frustrating to users if they are not warned before hitting the limit. Additionally, screen readers need a direct programmatic link to the character counter, and custom text counter indicators can easily get out of sync on initial load if the browser pre-fills fields.
+**Action:** Link textareas to counters with `aria-describedby`, implement a warning visual state (e.g. Amber `#f59e0b`) starting at 90% capacity, and always call the counter update function directly on page initialization to synchronize state with any pre-filled browser values.
