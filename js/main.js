@@ -134,9 +134,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const maxLength = messageArea.maxLength;
             charCounter.textContent = `${length} / ${maxLength}`;
             charCounter.classList.toggle('limit-reached', length >= maxLength);
+            charCounter.classList.toggle('warning', length >= maxLength * 0.9 && length < maxLength);
         };
 
         messageArea.addEventListener('input', updateCounter);
+        // Call immediately to handle page load or browser restore state
+        updateCounter();
     }
 
     if (contactForm) {

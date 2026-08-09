@@ -441,6 +441,10 @@ img {
     transition: var(--transition);
 }
 
+.char-counter.warning {
+    color: #f59e0b; /* Amber warning color */
+}
+
 .char-counter.limit-reached {
     color: #ef4444; /* Red color when limit is reached */
 }
