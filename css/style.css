@@ -345,7 +345,8 @@ img {
     font-weight: 600;
 }
 
-.project-link:hover {
+.project-link:hover,
+.project-link:focus-visible {
     text-decoration: underline;
     text-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
 }
