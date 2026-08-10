@@ -266,4 +266,29 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // ScrollSpy: Highlight active navigation link based on scroll position
+    const sections = document.querySelectorAll('section[id]');
+    const scrollSpyOptions = {
+        rootMargin: '-20% 0px -70% 0px'
+    };
+
+    const scrollSpyObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                navItems.forEach(link => {
+                    const isActive = link.getAttribute('href') === `#${id}`;
+                    link.classList.toggle('active', isActive);
+                    if (isActive) {
+                        link.setAttribute('aria-current', 'location');
+                    } else {
+                        link.removeAttribute('aria-current');
+                    }
+                });
+            }
+        });
+    }, scrollSpyOptions);
+
+    sections.forEach(section => scrollSpyObserver.observe(section));
 });
