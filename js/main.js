@@ -86,8 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     top: 0,
                     behavior: 'smooth'
                 });
-                const homeSection = document.getElementById('home');
-                if (homeSection) homeSection.focus();
+                const focusTarget = document.getElementById('home') || document.getElementById('main-content');
+                if (focusTarget) focusTarget.focus();
             });
         }
     }
