@@ -33,3 +33,7 @@
 ## 2026-08-08 - Accessible Warning States and Initialization on Text Input
 **Learning:** Dynamic text inputs with hard limits can feel frustrating to users if they are not warned before hitting the limit. Additionally, screen readers need a direct programmatic link to the character counter, and custom text counter indicators can easily get out of sync on initial load if the browser pre-fills fields.
 **Action:** Link textareas to counters with `aria-describedby`, implement a warning visual state (e.g. Amber `#f59e0b`) starting at 90% capacity, and always call the counter update function directly on page initialization to synchronize state with any pre-filled browser values.
+
+## 2026-08-11 - Synchronized Tooltip State and Restoring Logic
+**Learning:** Sighted pointer-users rely on tooltips (via the native 'title' attribute) for contextual feedback. When an asynchronous copy interaction transitions, leaving 'title' unsynchronized with 'aria-label' or visual changes results in a disconnected UX where mouse hover displays stale instructions.
+**Action:** When updating accessibility attributes like 'aria-label' and classes for quick feedback states (e.g. 'Email copied!'), always synchronize the 'title' attribute simultaneously and preserve the original title safely, checking for its existence prior to restoration.
