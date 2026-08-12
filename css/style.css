@@ -577,11 +577,18 @@ footer {
 .copy-btn:hover,
 .copy-btn:focus-visible { background: var(--primary-color); color: var(--bg-color); border-color: var(--primary-color); }
 .copy-btn.copied { color: var(--primary-color); border-color: var(--primary-color); background: rgba(56, 189, 248, 0.1); }
+.copy-btn.copied::before { content: "Copied!"; position: absolute; top: 50%; right: 125%; background: var(--primary-color); color: var(--bg-color); padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; white-space: nowrap; box-shadow: var(--shadow); animation: tooltipFadeInLeft 0.15s ease-out forwards; pointer-events: none; z-index: 10; }
+.copy-btn.copied::after { content: ""; position: absolute; top: 50%; right: 100%; border-width: 5px; border-style: solid; border-color: transparent transparent transparent var(--primary-color); animation: tooltipFadeInLeft 0.15s ease-out forwards; pointer-events: none; z-index: 10; }
 
-.copy-email-btn { background: none; border: none; color: var(--gray); cursor: pointer; font-size: 1rem; padding: 5px; transition: var(--transition); display: inline-flex; align-items: center; justify-content: center; }
+.copy-email-btn { position: relative; background: none; border: none; color: var(--gray); cursor: pointer; font-size: 1rem; padding: 5px; transition: var(--transition); display: inline-flex; align-items: center; justify-content: center; }
 .copy-email-btn:hover,
 .copy-email-btn:focus-visible { color: var(--primary-color); transform: scale(1.1); }
 .copy-email-btn.copied { color: var(--primary-color); }
+.copy-email-btn.copied::before { content: "Copied!"; position: absolute; bottom: 125%; left: 50%; background: var(--primary-color); color: var(--bg-color); padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; white-space: nowrap; box-shadow: var(--shadow); animation: tooltipFadeIn 0.15s ease-out forwards; pointer-events: none; z-index: 10; }
+.copy-email-btn.copied::after { content: ""; position: absolute; bottom: 100%; left: 50%; border-width: 5px; border-style: solid; border-color: var(--primary-color) transparent transparent transparent; animation: tooltipFadeIn 0.15s ease-out forwards; pointer-events: none; z-index: 10; }
+
+@keyframes tooltipFadeIn { from { opacity: 0; transform: translate(-50%, 4px); } to { opacity: 1; transform: translate(-50%, 0); } }
+@keyframes tooltipFadeInLeft { from { opacity: 0; transform: translate(4px, -50%); } to { opacity: 1; transform: translate(0, -50%); } }
 .email-link:hover { color: var(--primary-color); text-decoration: underline; }
 
 .gallery-grid {

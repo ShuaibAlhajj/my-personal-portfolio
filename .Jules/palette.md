@@ -33,3 +33,7 @@
 ## 2026-08-08 - Accessible Warning States and Initialization on Text Input
 **Learning:** Dynamic text inputs with hard limits can feel frustrating to users if they are not warned before hitting the limit. Additionally, screen readers need a direct programmatic link to the character counter, and custom text counter indicators can easily get out of sync on initial load if the browser pre-fills fields.
 **Action:** Link textareas to counters with `aria-describedby`, implement a warning visual state (e.g. Amber `#f59e0b`) starting at 90% capacity, and always call the counter update function directly on page initialization to synchronize state with any pre-filled browser values.
+
+## 2026-08-12 - Pure CSS Lightweight Tooltips on Temporary Interaction States
+**Learning:** Adding interactive, animated tooltip feedback for brief actions (like copy-to-clipboard buttons) using heavy UI libraries or JavaScript DOM injection adds unnecessary size and DOM complexity. Using CSS-only pseudo-elements (`::before`/`::after`) on top of a state class like `.copied` allows for lightweight, GPU-accelerated micro-animations without DOM overhead.
+**Action:** Implement lightweight tooltip bubbles using `.button.copied::before` (for container) and `.button.copied::after` (for arrow pointer) using position absolute, white-space: nowrap, pointer-events: none, and subtle fade-in scale transitions. Always adapt the positioning (e.g., top, left, right) depending on the button's surrounding content and boundaries to prevent clipping on viewports.
