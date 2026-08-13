@@ -33,3 +33,7 @@
 ## 2026-08-08 - Accessible Warning States and Initialization on Text Input
 **Learning:** Dynamic text inputs with hard limits can feel frustrating to users if they are not warned before hitting the limit. Additionally, screen readers need a direct programmatic link to the character counter, and custom text counter indicators can easily get out of sync on initial load if the browser pre-fills fields.
 **Action:** Link textareas to counters with `aria-describedby`, implement a warning visual state (e.g. Amber `#f59e0b`) starting at 90% capacity, and always call the counter update function directly on page initialization to synchronize state with any pre-filled browser values.
+
+## 2026-08-13 - Layout-Safe Pure CSS Tooltips for Micro-Feedback Interactions
+**Learning:** Creating feedback tooltips using absolute positioning and custom pseudo-elements triggered by dynamic state classes (e.g. `.copied`) provides immediate visual reinforcement without the performance overhead or DOM mutation of JavaScript-rendered floating elements. By sharing tooltip styles and aligning positions relative to the component bounds via standard transforms (like `translateY(-50%)`), tooltips remain robust across varied responsive viewports.
+**Action:** Use shared pseudo-element styling for micro-feedbacks, using `.active` or `.copied` classes to toggle visibility with brief fade-in CSS animations, and always utilize transforms for relative centration to keep markup extremely clean.
