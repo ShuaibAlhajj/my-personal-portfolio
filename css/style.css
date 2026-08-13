@@ -578,10 +578,29 @@ footer {
 .copy-btn:focus-visible { background: var(--primary-color); color: var(--bg-color); border-color: var(--primary-color); }
 .copy-btn.copied { color: var(--primary-color); border-color: var(--primary-color); background: rgba(56, 189, 248, 0.1); }
 
-.copy-email-btn { background: none; border: none; color: var(--gray); cursor: pointer; font-size: 1rem; padding: 5px; transition: var(--transition); display: inline-flex; align-items: center; justify-content: center; }
+.copy-email-btn { background: none; border: none; color: var(--gray); cursor: pointer; font-size: 1rem; padding: 5px; transition: var(--transition); display: inline-flex; align-items: center; justify-content: center; position: relative; }
 .copy-email-btn:hover,
 .copy-email-btn:focus-visible { color: var(--primary-color); transform: scale(1.1); }
 .copy-email-btn.copied { color: var(--primary-color); }
+
+/* Compact Tooltip UX Enhancements */
+.copy-btn.copied::after, .copy-email-btn.copied::after {
+    content: "Copied!";
+    position: absolute;
+    background: var(--light-bg);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    pointer-events: none;
+    box-shadow: var(--shadow);
+    animation: tooltip-in 0.2s ease-out forwards;
+}
+.copy-btn.copied::after { right: 125%; top: 50%; transform: translateY(-50%); }
+.copy-email-btn.copied::after { bottom: 125%; left: 50%; transform: translateX(-50%); }
+@keyframes tooltip-in { from { opacity: 0; } to { opacity: 1; } }
 .email-link:hover { color: var(--primary-color); text-decoration: underline; }
 
 .gallery-grid {
