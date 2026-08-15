@@ -578,10 +578,15 @@ footer {
 .copy-btn:focus-visible { background: var(--primary-color); color: var(--bg-color); border-color: var(--primary-color); }
 .copy-btn.copied { color: var(--primary-color); border-color: var(--primary-color); background: rgba(56, 189, 248, 0.1); }
 
-.copy-email-btn { background: none; border: none; color: var(--gray); cursor: pointer; font-size: 1rem; padding: 5px; transition: var(--transition); display: inline-flex; align-items: center; justify-content: center; }
+.copy-email-btn { background: none; border: none; color: var(--gray); cursor: pointer; font-size: 1rem; padding: 5px; transition: var(--transition); display: inline-flex; align-items: center; justify-content: center; position: relative; }
 .copy-email-btn:hover,
 .copy-email-btn:focus-visible { color: var(--primary-color); transform: scale(1.1); }
 .copy-email-btn.copied { color: var(--primary-color); }
+
+/* Compact CSS Tooltips for Copy Actions */
+.copy-btn.copied::after, .copy-email-btn.copied::after { content: 'Copied!'; position: absolute; background: var(--primary-color); color: #0f172a; font-weight: 600; font-size: 0.75rem; padding: 3px 8px; border-radius: 4px; white-space: nowrap; pointer-events: none; animation: fadeInUp 0.2s ease-out; box-shadow: var(--shadow); z-index: 10; }
+.copy-btn.copied::after { right: 100%; top: 50%; transform: translateY(-50%); margin-right: 8px; }
+.copy-email-btn.copied::after { bottom: 100%; left: 50%; transform: translateX(-50%); margin-bottom: 6px; }
 .email-link:hover { color: var(--primary-color); text-decoration: underline; }
 
 .gallery-grid {
