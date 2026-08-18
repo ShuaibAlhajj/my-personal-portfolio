@@ -128,21 +128,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const charCounter = document.getElementById('char-counter');
     let feedbackTimeout;
 
-    if (messageArea && charCounter) {
-        const updateCounter = () => {
-            const length = messageArea.value.length;
-            const maxLength = messageArea.maxLength;
-            charCounter.textContent = `${length} / ${maxLength}`;
-            charCounter.classList.toggle('limit-reached', length >= maxLength);
-            charCounter.classList.toggle('warning', length >= maxLength * 0.9 && length < maxLength);
-        };
+    const updateCounter = () => {
+        if (!messageArea || !charCounter) return;
+        const length = messageArea.value.length;
+        const maxLength = messageArea.maxLength;
+        charCounter.textContent = `${length} / ${maxLength}`;
+        charCounter.classList.toggle('limit-reached', length >= maxLength);
+        charCounter.classList.toggle('warning', length >= maxLength * 0.9 && length < maxLength);
+    };
 
+    if (messageArea && charCounter) {
         messageArea.addEventListener('input', updateCounter);
         // Call immediately to handle page load or browser restore state
         updateCounter();
     }
 
     if (contactForm) {
+        contactForm.addEventListener('reset', () => setTimeout(updateCounter, 0));
+
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const name = document.getElementById('name').value;
@@ -160,10 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     feedbackTimeout = setTimeout(() => feedback.textContent = '', 5000);
                 }
                 contactForm.reset();
-                if (charCounter) {
-                    charCounter.textContent = `0 / ${messageArea.maxLength}`;
-                    charCounter.classList.remove('limit-reached');
-                }
+                updateCounter();
                 btn.innerHTML = originalHTML;
                 btn.disabled = false;
             }, 1500);
