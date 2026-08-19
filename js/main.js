@@ -128,8 +128,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const charCounter = document.getElementById('char-counter');
     let feedbackTimeout;
 
+    let updateCounter;
     if (messageArea && charCounter) {
-        const updateCounter = () => {
+        updateCounter = () => {
             const length = messageArea.value.length;
             const maxLength = messageArea.maxLength;
             charCounter.textContent = `${length} / ${maxLength}`;
@@ -138,6 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         messageArea.addEventListener('input', updateCounter);
+        if (contactForm) contactForm.addEventListener('reset', () => setTimeout(updateCounter, 0));
         // Call immediately to handle page load or browser restore state
         updateCounter();
     }
@@ -160,10 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     feedbackTimeout = setTimeout(() => feedback.textContent = '', 5000);
                 }
                 contactForm.reset();
-                if (charCounter) {
-                    charCounter.textContent = `0 / ${messageArea.maxLength}`;
-                    charCounter.classList.remove('limit-reached');
-                }
+                if (updateCounter) updateCounter();
                 btn.innerHTML = originalHTML;
                 btn.disabled = false;
             }, 1500);
@@ -225,15 +224,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 const icon = copyEmailBtn.querySelector('i');
                 const originalIconClass = icon.className;
                 const originalAriaLabel = copyEmailBtn.getAttribute('aria-label');
+                const originalTitle = copyEmailBtn.getAttribute('title');
 
                 icon.className = 'fas fa-check';
                 copyEmailBtn.classList.add('copied');
                 copyEmailBtn.setAttribute('aria-label', 'Email copied!');
+                if (originalTitle !== null) copyEmailBtn.setAttribute('title', 'Email copied!');
 
                 setTimeout(() => {
                     icon.className = originalIconClass;
                     copyEmailBtn.classList.remove('copied');
                     copyEmailBtn.setAttribute('aria-label', originalAriaLabel);
+                    if (originalTitle !== null) copyEmailBtn.setAttribute('title', originalTitle);
                     isCopying = false;
                 }, 2000);
             }).catch(() => {
