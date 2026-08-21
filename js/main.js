@@ -128,17 +128,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const charCounter = document.getElementById('char-counter');
     let feedbackTimeout;
 
+    let updateCounter;
     if (messageArea && charCounter) {
-        const updateCounter = () => {
-            const length = messageArea.value.length;
-            const maxLength = messageArea.maxLength;
-            charCounter.textContent = `${length} / ${maxLength}`;
-            charCounter.classList.toggle('limit-reached', length >= maxLength);
-            charCounter.classList.toggle('warning', length >= maxLength * 0.9 && length < maxLength);
+        updateCounter = () => {
+            const len = messageArea.value.length, max = messageArea.maxLength;
+            charCounter.textContent = `${len} / ${max}`;
+            charCounter.classList.toggle('limit-reached', len >= max);
+            charCounter.classList.toggle('warning', len >= max * 0.9 && len < max);
         };
-
         messageArea.addEventListener('input', updateCounter);
-        // Call immediately to handle page load or browser restore state
+        if (contactForm) contactForm.addEventListener('reset', () => setTimeout(updateCounter, 0));
         updateCounter();
     }
 
@@ -160,10 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     feedbackTimeout = setTimeout(() => feedback.textContent = '', 5000);
                 }
                 contactForm.reset();
-                if (charCounter) {
-                    charCounter.textContent = `0 / ${messageArea.maxLength}`;
-                    charCounter.classList.remove('limit-reached');
-                }
+                if (updateCounter) updateCounter();
                 btn.innerHTML = originalHTML;
                 btn.disabled = false;
             }, 1500);
@@ -223,17 +219,19 @@ document.addEventListener('DOMContentLoaded', () => {
             const email = copyEmailBtn.getAttribute('data-email');
             navigator.clipboard.writeText(email).then(() => {
                 const icon = copyEmailBtn.querySelector('i');
-                const originalIconClass = icon.className;
-                const originalAriaLabel = copyEmailBtn.getAttribute('aria-label');
+                const origIcon = icon.className, origAria = copyEmailBtn.getAttribute('aria-label'), origTitle = copyEmailBtn.getAttribute('title');
 
                 icon.className = 'fas fa-check';
                 copyEmailBtn.classList.add('copied');
                 copyEmailBtn.setAttribute('aria-label', 'Email copied!');
+                copyEmailBtn.setAttribute('title', 'Email copied!');
 
                 setTimeout(() => {
-                    icon.className = originalIconClass;
+                    icon.className = origIcon;
                     copyEmailBtn.classList.remove('copied');
-                    copyEmailBtn.setAttribute('aria-label', originalAriaLabel);
+                    copyEmailBtn.setAttribute('aria-label', origAria);
+                    if (origTitle !== null) copyEmailBtn.setAttribute('title', origTitle);
+                    else copyEmailBtn.removeAttribute('title');
                     isCopying = false;
                 }, 2000);
             }).catch(() => {
