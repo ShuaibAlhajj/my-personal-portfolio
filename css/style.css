@@ -396,7 +396,8 @@ img {
     text-align: center;
 }
 
-.info-item a:hover {
+.info-item a:hover,
+.info-item a:focus-visible {
     color: var(--primary-color);
 }
 
@@ -582,7 +583,8 @@ footer {
 .copy-email-btn:hover,
 .copy-email-btn:focus-visible { color: var(--primary-color); transform: scale(1.1); }
 .copy-email-btn.copied { color: var(--primary-color); }
-.email-link:hover { color: var(--primary-color); text-decoration: underline; }
+.email-link:hover,
+.email-link:focus-visible { color: var(--primary-color); text-decoration: underline; }
 
 .gallery-grid {
     display: grid;

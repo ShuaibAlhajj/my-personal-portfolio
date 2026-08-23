@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 contactForm.reset();
                 if (charCounter) {
                     charCounter.textContent = `0 / ${messageArea.maxLength}`;
-                    charCounter.classList.remove('limit-reached');
+                    charCounter.classList.remove('limit-reached', 'warning');
                 }
                 btn.innerHTML = originalHTML;
                 btn.disabled = false;
