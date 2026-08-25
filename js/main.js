@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 contactForm.reset();
                 if (charCounter) {
                     charCounter.textContent = `0 / ${messageArea.maxLength}`;
-                    charCounter.classList.remove('limit-reached');
+                    charCounter.classList.remove('limit-reached', 'warning');
                 }
                 btn.innerHTML = originalHTML;
                 btn.disabled = false;
@@ -225,15 +225,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 const icon = copyEmailBtn.querySelector('i');
                 const originalIconClass = icon.className;
                 const originalAriaLabel = copyEmailBtn.getAttribute('aria-label');
+                const originalTitle = copyEmailBtn.getAttribute('title');
 
                 icon.className = 'fas fa-check';
                 copyEmailBtn.classList.add('copied');
                 copyEmailBtn.setAttribute('aria-label', 'Email copied!');
+                copyEmailBtn.setAttribute('title', 'Email copied!');
 
                 setTimeout(() => {
                     icon.className = originalIconClass;
                     copyEmailBtn.classList.remove('copied');
                     copyEmailBtn.setAttribute('aria-label', originalAriaLabel);
+                    if (originalTitle !== null) {
+                        copyEmailBtn.setAttribute('title', originalTitle);
+                    } else {
+                        copyEmailBtn.removeAttribute('title');
+                    }
                     isCopying = false;
                 }, 2000);
             }).catch(() => {
