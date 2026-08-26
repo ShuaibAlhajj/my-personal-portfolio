@@ -396,9 +396,12 @@ img {
     text-align: center;
 }
 
-.info-item a:hover {
-    color: var(--primary-color);
-}
+.info-item a { position: relative; transition: var(--transition); }
+.info-item a:hover,
+.info-item a:focus-visible { color: var(--primary-color); }
+.info-item a[data-tooltip]::after { content: attr(data-tooltip); position: absolute; bottom: 125%; left: 50%; transform: translateX(-50%) translateY(4px); background: rgba(15, 23, 42, 0.95); color: var(--secondary-color); padding: 4px 8px; border-radius: 4px; border: 1px solid var(--border-color); font-size: 0.75rem; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s ease, transform 0.2s ease; z-index: 10; box-shadow: var(--shadow); }
+.info-item a[data-tooltip]:hover::after,
+.info-item a[data-tooltip]:focus-visible::after { opacity: 1; transform: translateX(-50%) translateY(0); }
 
 .contact-form {
     flex: 1;
