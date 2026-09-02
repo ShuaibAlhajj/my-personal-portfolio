@@ -206,7 +206,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     isCopying = false;
                 }, 2000);
             }).catch(() => {
-                isCopying = false;
+                copyBtn.setAttribute('aria-label', 'Failed to copy code');
+                copyBtn.setAttribute('title', 'Failed to copy code');
+                setTimeout(() => {
+                    copyBtn.setAttribute('aria-label', 'Copy code to clipboard');
+                    copyBtn.setAttribute('title', 'Copy code to clipboard');
+                    isCopying = false;
+                }, 2000);
             });
         });
     });
