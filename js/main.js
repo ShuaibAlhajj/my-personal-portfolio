@@ -183,7 +183,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const copyBtn = document.createElement('button');
         copyBtn.className = 'copy-btn';
         copyBtn.setAttribute('aria-label', 'Copy code to clipboard');
-        copyBtn.setAttribute('title', 'Copy code to clipboard');
+        copyBtn.removeAttribute('title');
+        copyBtn.setAttribute('data-tooltip', 'Copy code');
         copyBtn.innerHTML = '<i class="far fa-copy" aria-hidden="true"></i>';
         block.appendChild(copyBtn);
 
