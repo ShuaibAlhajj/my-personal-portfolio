@@ -33,3 +33,7 @@
 ## 2026-08-08 - Accessible Warning States and Initialization on Text Input
 **Learning:** Dynamic text inputs with hard limits can feel frustrating to users if they are not warned before hitting the limit. Additionally, screen readers need a direct programmatic link to the character counter, and custom text counter indicators can easily get out of sync on initial load if the browser pre-fills fields.
 **Action:** Link textareas to counters with `aria-describedby`, implement a warning visual state (e.g. Amber `#f59e0b`) starting at 90% capacity, and always call the counter update function directly on page initialization to synchronize state with any pre-filled browser values.
+
+## 2026-09-03 - Custom CSS Tooltips and Duplicate Native Tooltip Prevention
+**Learning:** Adding custom CSS tooltips via `data-tooltip` on elements that also retain native HTML `title` attributes causes duplicate, overlapping tooltips on hover (custom CSS tooltip + delayed OS/browser tooltip).
+**Action:** Remove native HTML `title` attributes on elements using custom `data-tooltip` popups while preserving `aria-label` attributes to ensure screen readers remain fully supported without visual tooltip duplication.
