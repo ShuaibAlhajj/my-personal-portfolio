@@ -578,6 +578,14 @@ footer {
 .copy-btn:focus-visible { background: var(--primary-color); color: var(--bg-color); border-color: var(--primary-color); }
 .copy-btn.copied { color: var(--primary-color); border-color: var(--primary-color); background: rgba(56, 189, 248, 0.1); }
 
+/* Tooltip Styles */
+[data-tooltip]:not(.copy-btn) { position: relative; }
+[data-tooltip]::after { content: attr(data-tooltip); position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%) translateY(-6px); background: #020617; color: var(--white); padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s ease, transform 0.2s ease; border: 1px solid var(--border-color); box-shadow: var(--shadow); z-index: 10; }
+[data-tooltip]:hover::after, [data-tooltip]:focus-visible::after { opacity: 1; transform: translateX(-50%) translateY(-10px); }
+
+.copy-btn[data-tooltip]::after { bottom: auto; top: 50%; left: auto; right: 100%; transform: translateY(-50%) translateX(-6px); }
+.copy-btn[data-tooltip]:hover::after, .copy-btn[data-tooltip]:focus-visible::after { transform: translateY(-50%) translateX(-10px); }
+
 .copy-email-btn { background: none; border: none; color: var(--gray); cursor: pointer; font-size: 1rem; padding: 5px; transition: var(--transition); display: inline-flex; align-items: center; justify-content: center; }
 .copy-email-btn:hover,
 .copy-email-btn:focus-visible { color: var(--primary-color); transform: scale(1.1); }
