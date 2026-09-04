@@ -37,3 +37,7 @@
 ## 2026-09-03 - Custom CSS Tooltips and Duplicate Native Tooltip Prevention
 **Learning:** Adding custom CSS tooltips via `data-tooltip` on elements that also retain native HTML `title` attributes causes duplicate, overlapping tooltips on hover (custom CSS tooltip + delayed OS/browser tooltip).
 **Action:** Remove native HTML `title` attributes on elements using custom `data-tooltip` popups while preserving `aria-label` attributes to ensure screen readers remain fully supported without visual tooltip duplication.
+
+## 2026-09-04 - Dynamic Custom Tooltip Feedback on Copy Action
+**Learning:** Custom CSS tooltips (`data-tooltip`) on copy buttons can become out-of-sync with button icon state changes if only `aria-label` or `title` is updated on click, causing confusing hover messages like "Copy code" when the icon displays a success checkmark.
+**Action:** Always update `data-tooltip` alongside `aria-label` during temporary feedback loops, and remove native `title` attribute manipulation to prevent duplicate native browser popups.

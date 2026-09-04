@@ -198,20 +198,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 copyBtn.innerHTML = '<i class="fas fa-check" aria-hidden="true"></i>';
                 copyBtn.classList.add('copied');
                 copyBtn.setAttribute('aria-label', 'Code copied!');
-                copyBtn.setAttribute('title', 'Code copied!');
+                copyBtn.setAttribute('data-tooltip', 'Code copied!');
                 setTimeout(() => {
                     copyBtn.innerHTML = '<i class="far fa-copy" aria-hidden="true"></i>';
                     copyBtn.classList.remove('copied');
                     copyBtn.setAttribute('aria-label', 'Copy code to clipboard');
-                    copyBtn.setAttribute('title', 'Copy code to clipboard');
+                    copyBtn.setAttribute('data-tooltip', 'Copy code');
                     isCopying = false;
                 }, 2000);
             }).catch(() => {
                 copyBtn.setAttribute('aria-label', 'Failed to copy code');
-                copyBtn.setAttribute('title', 'Failed to copy code');
+                copyBtn.setAttribute('data-tooltip', 'Failed to copy code');
                 setTimeout(() => {
                     copyBtn.setAttribute('aria-label', 'Copy code to clipboard');
-                    copyBtn.setAttribute('title', 'Copy code to clipboard');
+                    copyBtn.setAttribute('data-tooltip', 'Copy code');
                     isCopying = false;
                 }, 2000);
             });
@@ -234,30 +234,32 @@ document.addEventListener('DOMContentLoaded', () => {
             isCopying = true;
 
             const email = copyEmailBtn.getAttribute('data-email');
+            const origLabel = copyEmailBtn.getAttribute('aria-label') || 'Copy email address';
+            const origTooltip = copyEmailBtn.getAttribute('data-tooltip') || 'Copy email address';
             navigator.clipboard.writeText(email).then(() => {
                 const icon = copyEmailBtn.querySelector('i');
                 const originalIconClass = icon.className;
-                const originalAriaLabel = copyEmailBtn.getAttribute('aria-label');
-                const originalTitle = copyEmailBtn.getAttribute('title');
 
                 icon.className = 'fas fa-check';
                 copyEmailBtn.classList.add('copied');
                 copyEmailBtn.setAttribute('aria-label', 'Email copied!');
-                copyEmailBtn.setAttribute('title', 'Email copied!');
+                copyEmailBtn.setAttribute('data-tooltip', 'Email copied!');
 
                 setTimeout(() => {
                     icon.className = originalIconClass;
                     copyEmailBtn.classList.remove('copied');
-                    copyEmailBtn.setAttribute('aria-label', originalAriaLabel);
-                    if (originalTitle !== null) {
-                        copyEmailBtn.setAttribute('title', originalTitle);
-                    } else {
-                        copyEmailBtn.removeAttribute('title');
-                    }
+                    copyEmailBtn.setAttribute('aria-label', origLabel);
+                    copyEmailBtn.setAttribute('data-tooltip', origTooltip);
                     isCopying = false;
                 }, 2000);
             }).catch(() => {
-                isCopying = false;
+                copyEmailBtn.setAttribute('aria-label', 'Failed to copy email');
+                copyEmailBtn.setAttribute('data-tooltip', 'Failed to copy email');
+                setTimeout(() => {
+                    copyEmailBtn.setAttribute('aria-label', origLabel);
+                    copyEmailBtn.setAttribute('data-tooltip', origTooltip);
+                    isCopying = false;
+                }, 2000);
             });
         });
     }
