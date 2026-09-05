@@ -41,3 +41,7 @@
 ## 2026-09-04 - Dynamic Custom Tooltip Feedback on Copy Action
 **Learning:** Custom CSS tooltips (`data-tooltip`) on copy buttons can become out-of-sync with button icon state changes if only `aria-label` or `title` is updated on click, causing confusing hover messages like "Copy code" when the icon displays a success checkmark.
 **Action:** Always update `data-tooltip` alongside `aria-label` during temporary feedback loops, and remove native `title` attribute manipulation to prevent duplicate native browser popups.
+
+## 2026-09-05 - Accessible External Link Visual Cues and Screen Reader Parity
+**Learning:** `target="_blank"` links with custom `aria-label` text can hide the fact that a link opens in a new tab from screen reader users if `(opens in new tab)` is omitted, while sighted users lack context without a visual indicator.
+**Action:** Always include `(opens in new tab)` in `aria-label` overrides for `target="_blank"` links and pair them with an `aria-hidden="true"` external link icon (`.external-icon`) for visual parity across input modalities.

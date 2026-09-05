@@ -345,6 +345,12 @@ img {
     font-weight: 600;
 }
 
+.external-icon {
+    font-size: 0.8em;
+    margin-left: 2px;
+    opacity: 0.85;
+}
+
 .project-link:hover {
     text-decoration: underline;
     text-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
