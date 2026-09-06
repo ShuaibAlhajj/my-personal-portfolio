@@ -178,9 +178,15 @@
           </div>
           <form class="contact-form" id="contactForm">
             <label for="name" class="sr-only">Your Name</label>
-            <input type="text" id="name" placeholder="Your Name" required autocomplete="name" />
+            <div class="input-wrapper">
+              <input type="text" id="name" placeholder="Your Name" required autocomplete="name" />
+              <button type="button" class="clear-input-btn" aria-label="Clear Name field" hidden><i class="fas fa-times-circle" aria-hidden="true"></i></button>
+            </div>
             <label for="email" class="sr-only">Your Email</label>
-            <input type="email" id="email" placeholder="Your Email" required autocomplete="email" />
+            <div class="input-wrapper">
+              <input type="email" id="email" placeholder="Your Email" required autocomplete="email" />
+              <button type="button" class="clear-input-btn" aria-label="Clear Email field" hidden><i class="fas fa-times-circle" aria-hidden="true"></i></button>
+            </div>
             <label for="message" class="sr-only">Your Message</label>
             <div class="textarea-wrapper">
               <textarea id="message" placeholder="Your Message" rows="5" required maxlength="1000" aria-describedby="char-counter"></textarea>

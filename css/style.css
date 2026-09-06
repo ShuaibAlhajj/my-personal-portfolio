@@ -414,6 +414,44 @@ img {
     gap: 15px;
 }
 
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding-right: 40px !important;
+}
+
+.clear-input-btn {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    color: var(--gray);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    border-radius: 50%;
+}
+
+.clear-input-btn[hidden] {
+    display: none !important;
+}
+
+.clear-input-btn:hover,
+.clear-input-btn:focus-visible {
+    color: var(--primary-color);
+    transform: scale(1.1);
+}
+
 .contact-form input,
 .contact-form textarea {
     padding: 15px;

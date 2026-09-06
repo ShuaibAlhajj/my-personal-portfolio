@@ -142,15 +142,44 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCounter();
     }
 
+    // Clear Input Button Logic
+    const inputWrappers = document.querySelectorAll('.input-wrapper');
+    const updateClearBtn = (input, clearBtn) => {
+        if (!input || !clearBtn) return;
+        clearBtn.hidden = input.value.trim().length === 0;
+    };
+
+    inputWrappers.forEach(wrapper => {
+        const input = wrapper.querySelector('input');
+        const clearBtn = wrapper.querySelector('.clear-input-btn');
+        if (input && clearBtn) {
+            input.addEventListener('input', () => updateClearBtn(input, clearBtn));
+            clearBtn.addEventListener('click', () => {
+                input.value = '';
+                updateClearBtn(input, clearBtn);
+                input.focus();
+            });
+            // Handle pre-filled inputs on page load
+            updateClearBtn(input, clearBtn);
+        }
+    });
+
     if (contactForm) {
-        const resetCounter = () => {
+        const resetFormUI = () => {
             if (charCounter && messageArea) {
                 charCounter.textContent = `0 / ${messageArea.maxLength}`;
                 charCounter.classList.remove('limit-reached', 'warning');
             }
+            inputWrappers.forEach(wrapper => {
+                const input = wrapper.querySelector('input');
+                const clearBtn = wrapper.querySelector('.clear-input-btn');
+                if (input && clearBtn) {
+                    clearBtn.hidden = true;
+                }
+            });
         };
 
-        contactForm.addEventListener('reset', resetCounter);
+        contactForm.addEventListener('reset', resetFormUI);
 
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -169,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     feedbackTimeout = setTimeout(() => feedback.textContent = '', 5000);
                 }
                 contactForm.reset();
-                resetCounter();
+                resetFormUI();
                 btn.innerHTML = originalHTML;
                 btn.disabled = false;
             }, 1500);

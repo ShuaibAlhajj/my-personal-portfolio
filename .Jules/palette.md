@@ -45,3 +45,7 @@
 ## 2026-09-05 - Accessible External Link Visual Cues and Screen Reader Parity
 **Learning:** `target="_blank"` links with custom `aria-label` text can hide the fact that a link opens in a new tab from screen reader users if `(opens in new tab)` is omitted, while sighted users lack context without a visual indicator.
 **Action:** Always include `(opens in new tab)` in `aria-label` overrides for `target="_blank"` links and pair them with an `aria-hidden="true"` external link icon (`.external-icon`) for visual parity across input modalities.
+
+## 2026-09-06 - CSS Display Overrides on HTML Hidden Attributes
+**Learning:** Custom CSS rules setting explicit `display` properties (such as `display: inline-flex`) on interactive elements override default browser stylesheets for the standard HTML `[hidden]` attribute, causing elements to remain visually visible even when the `hidden` attribute is added.
+**Action:** Always pair elements using explicit `display` styles with a `[hidden] { display: none !important; }` rule to preserve standard `hidden` attribute behavior across all components.
