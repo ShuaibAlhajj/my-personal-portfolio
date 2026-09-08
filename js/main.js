@@ -142,12 +142,24 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCounter();
     }
 
+    const inputWrappers = document.querySelectorAll('.input-wrapper');
+    const updateClearBtns = () => inputWrappers.forEach(w => {
+        const i = w.querySelector('input'), b = w.querySelector('.clear-input-btn');
+        if (i && b) b.hidden = !i.value;
+    });
+    inputWrappers.forEach(w => {
+        const i = w.querySelector('input'), b = w.querySelector('.clear-input-btn');
+        if (i && b) { i.addEventListener('input', () => { b.hidden = !i.value; }); b.addEventListener('click', () => { i.value = ''; b.hidden = true; i.focus(); }); }
+    });
+    updateClearBtns();
+
     if (contactForm) {
         const resetCounter = () => {
             if (charCounter && messageArea) {
                 charCounter.textContent = `0 / ${messageArea.maxLength}`;
                 charCounter.classList.remove('limit-reached', 'warning');
             }
+            updateClearBtns();
         };
 
         contactForm.addEventListener('reset', resetCounter);
