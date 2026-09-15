@@ -230,10 +230,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Close mobile menu on Escape key
+    // Close mobile menu on Escape key and return focus to toggle button
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
+        if (e.key === 'Escape' && navLinks && navLinks.classList.contains('active')) {
+            const shouldRefocusToggle = navLinks.contains(document.activeElement) || (menuToggle && menuToggle.contains(document.activeElement));
             closeMenu();
+            if (shouldRefocusToggle && menuToggle) {
+                menuToggle.focus();
+            }
         }
     });
 
