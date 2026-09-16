@@ -45,3 +45,7 @@
 ## 2026-09-05 - Accessible External Link Visual Cues and Screen Reader Parity
 **Learning:** `target="_blank"` links with custom `aria-label` text can hide the fact that a link opens in a new tab from screen reader users if `(opens in new tab)` is omitted, while sighted users lack context without a visual indicator.
 **Action:** Always include `(opens in new tab)` in `aria-label` overrides for `target="_blank"` links and pair them with an `aria-hidden="true"` external link icon (`.external-icon`) for visual parity across input modalities.
+
+## 2026-09-16 - Keyboard Input Clearing and Event Isolation
+**Learning:** Adding `Escape` key listeners to text inputs to clear field values can inadvertently trigger document-level `Escape` handlers (such as closing mobile menus or modals) if event propagation isn't stopped.
+**Action:** Always call `e.stopPropagation()` when handling field-level `Escape` key actions in text inputs to prevent bubbling up to global component key handlers.
