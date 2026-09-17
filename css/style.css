@@ -427,6 +427,12 @@ img {
     transition: var(--transition);
 }
 
+.contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+    overflow-y: hidden;
+}
+
 .contact-form input:focus,
 .contact-form textarea:focus {
     border-color: var(--primary-color);
