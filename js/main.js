@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const closeMenu = () => {
         if (navLinks && navLinks.classList.contains('active')) {
+            const isFocusInNav = navLinks.contains(document.activeElement) || document.activeElement === menuToggle;
             navLinks.classList.remove('active');
             document.body.classList.remove('no-scroll');
             if (menuToggle) {
@@ -13,6 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (icon) {
                     icon.classList.remove('fa-times');
                     icon.classList.add('fa-bars');
+                }
+                if (isFocusInNav) {
+                    menuToggle.focus();
                 }
             }
         }
@@ -149,7 +153,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     inputWrappers.forEach(w => {
         const i = w.querySelector('input'), b = w.querySelector('.clear-input-btn');
-        if (i && b) { i.addEventListener('input', () => { b.hidden = !i.value; }); b.addEventListener('click', () => { i.value = ''; b.hidden = true; i.focus(); }); }
+        if (i && b) {
+            i.addEventListener('input', () => { b.hidden = !i.value; });
+            i.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && i.value) {
+                    e.stopPropagation();
+                    i.value = '';
+                    b.hidden = true;
+                }
+            });
+            b.addEventListener('click', () => { i.value = ''; b.hidden = true; i.focus(); });
+        }
     });
     updateClearBtns();
 
