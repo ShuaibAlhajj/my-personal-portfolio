@@ -232,8 +232,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Close mobile menu on Escape key
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
+        if (e.key === 'Escape' && navLinks && navLinks.classList.contains('active')) {
+            const isFocusInNav = (navLinks && navLinks.contains(document.activeElement)) || document.activeElement === menuToggle;
             closeMenu();
+            if (isFocusInNav && menuToggle) {
+                menuToggle.focus();
+            }
         }
     });
 
