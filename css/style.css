@@ -424,7 +424,13 @@ img {
     font-family: inherit;
     font-size: 1rem;
     outline: none;
-    transition: var(--transition);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form textarea {
+    min-height: 120px;
+    resize: vertical;
+    overflow-y: hidden;
 }
 
 .contact-form input:focus,
