@@ -45,3 +45,7 @@
 ## 2026-09-05 - Accessible External Link Visual Cues and Screen Reader Parity
 **Learning:** `target="_blank"` links with custom `aria-label` text can hide the fact that a link opens in a new tab from screen reader users if `(opens in new tab)` is omitted, while sighted users lack context without a visual indicator.
 **Action:** Always include `(opens in new tab)` in `aria-label` overrides for `target="_blank"` links and pair them with an `aria-hidden="true"` external link icon (`.external-icon`) for visual parity across input modalities.
+
+## 2026-10-04 - Dynamic Auto-Expanding Textarea and Reset Synchronization
+**Learning:** Dynamic textareas that calculate height using `scrollHeight` can remain artificially tall if height is not reset to `'auto'` prior to calculation on input, and form resets won't collapse the height unless `style.height` is explicitly cleared in the reset handler.
+**Action:** Always calculate auto-expansion by setting `element.style.height = 'auto'` before assigning `element.scrollHeight` on input, and explicitly clear `element.style.height = ''` inside form reset listeners.
