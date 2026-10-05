@@ -135,6 +135,10 @@ document.addEventListener('DOMContentLoaded', () => {
             charCounter.textContent = `${length} / ${maxLength}`;
             charCounter.classList.toggle('limit-reached', length >= maxLength);
             charCounter.classList.toggle('warning', length >= maxLength * 0.9 && length < maxLength);
+
+            // Auto-expand textarea height
+            messageArea.style.height = 'auto';
+            messageArea.style.height = `${messageArea.scrollHeight}px`;
         };
 
         messageArea.addEventListener('input', updateCounter);
@@ -158,6 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (charCounter && messageArea) {
                 charCounter.textContent = `0 / ${messageArea.maxLength}`;
                 charCounter.classList.remove('limit-reached', 'warning');
+                messageArea.style.height = '';
             }
             updateClearBtns();
         };
