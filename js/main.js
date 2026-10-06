@@ -230,10 +230,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Close mobile menu on Escape key
+    // Handle Escape key interactions (Mobile menu focus restoration & input clearing)
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-            closeMenu();
+            if (navLinks && navLinks.classList.contains('active')) {
+                const isNavFocused = navLinks.contains(document.activeElement) || document.activeElement === menuToggle;
+                closeMenu();
+                if (isNavFocused && menuToggle) {
+                    menuToggle.focus();
+                }
+            } else if (document.activeElement && document.activeElement.matches('.input-wrapper input')) {
+                const input = document.activeElement;
+                if (input.value) {
+                    input.value = '';
+                    const clearBtn = input.closest('.input-wrapper')?.querySelector('.clear-input-btn');
+                    if (clearBtn) clearBtn.hidden = true;
+                }
+            }
         }
     });
 
