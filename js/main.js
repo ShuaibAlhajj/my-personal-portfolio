@@ -276,6 +276,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Handle initial URL hash on page load
+    if (window.location.hash && window.location.hash.length > 1) {
+        const hashId = window.location.hash.slice(1);
+        const initialTarget = document.getElementById(hashId);
+        if (initialTarget) {
+            setTimeout(() => {
+                initialTarget.focus();
+            }, 100);
+        }
+    }
+
     // Smooth Scroll for Anchor Links (Optional JS enhancement for older browsers)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
