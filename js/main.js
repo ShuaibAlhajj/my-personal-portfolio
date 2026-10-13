@@ -129,12 +129,18 @@ document.addEventListener('DOMContentLoaded', () => {
     let feedbackTimeout;
 
     if (messageArea && charCounter) {
+        const autoExpand = () => {
+            messageArea.style.height = 'auto';
+            messageArea.style.height = `${Math.max(120, messageArea.scrollHeight)}px`;
+        };
+
         const updateCounter = () => {
             const length = messageArea.value.length;
             const maxLength = messageArea.maxLength;
             charCounter.textContent = `${length} / ${maxLength}`;
             charCounter.classList.toggle('limit-reached', length >= maxLength);
             charCounter.classList.toggle('warning', length >= maxLength * 0.9 && length < maxLength);
+            autoExpand();
         };
 
         messageArea.addEventListener('input', updateCounter);
@@ -158,6 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (charCounter && messageArea) {
                 charCounter.textContent = `0 / ${messageArea.maxLength}`;
                 charCounter.classList.remove('limit-reached', 'warning');
+                messageArea.style.height = '120px';
             }
             updateClearBtns();
         };
