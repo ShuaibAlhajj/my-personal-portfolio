@@ -443,6 +443,13 @@ img {
     flex-direction: column;
 }
 
+.contact-form textarea {
+    min-height: 120px;
+    resize: vertical;
+    overflow-y: hidden;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
 .char-counter {
     font-size: 0.8rem;
     color: var(--gray);
