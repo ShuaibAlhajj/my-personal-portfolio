@@ -137,9 +137,18 @@ document.addEventListener('DOMContentLoaded', () => {
             charCounter.classList.toggle('warning', length >= maxLength * 0.9 && length < maxLength);
         };
 
-        messageArea.addEventListener('input', updateCounter);
+        const autoExpand = () => {
+            messageArea.style.height = 'auto';
+            messageArea.style.height = `${messageArea.scrollHeight}px`;
+        };
+
+        messageArea.addEventListener('input', () => {
+            updateCounter();
+            autoExpand();
+        });
         // Call immediately to handle page load or browser restore state
         updateCounter();
+        autoExpand();
     }
 
     const inputWrappers = document.querySelectorAll('.input-wrapper');
@@ -149,7 +158,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     inputWrappers.forEach(w => {
         const i = w.querySelector('input'), b = w.querySelector('.clear-input-btn');
-        if (i && b) { i.addEventListener('input', () => { b.hidden = !i.value; }); b.addEventListener('click', () => { i.value = ''; b.hidden = true; i.focus(); }); }
+        if (i && b) {
+            i.addEventListener('input', () => { b.hidden = !i.value; });
+            i.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && i.value) {
+                    e.stopPropagation();
+                    i.value = '';
+                    b.hidden = true;
+                }
+            });
+            b.addEventListener('click', () => { i.value = ''; b.hidden = true; i.focus(); });
+        }
     });
     updateClearBtns();
 
@@ -158,6 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (charCounter && messageArea) {
                 charCounter.textContent = `0 / ${messageArea.maxLength}`;
                 charCounter.classList.remove('limit-reached', 'warning');
+                messageArea.style.height = '';
             }
             updateClearBtns();
         };

@@ -45,3 +45,7 @@
 ## 2026-09-05 - Accessible External Link Visual Cues and Screen Reader Parity
 **Learning:** `target="_blank"` links with custom `aria-label` text can hide the fact that a link opens in a new tab from screen reader users if `(opens in new tab)` is omitted, while sighted users lack context without a visual indicator.
 **Action:** Always include `(opens in new tab)` in `aria-label` overrides for `target="_blank"` links and pair them with an `aria-hidden="true"` external link icon (`.external-icon`) for visual parity across input modalities.
+
+## 2026-09-06 - Smooth Auto-Expanding Textareas and Specific CSS Transitions
+**Learning:** Adding dynamic height expansion based on `scrollHeight` to textareas with generic `transition: all` rules causes visual animation lag and jitter while typing.
+**Action:** Set `height: auto` before calculating `scrollHeight`, and scope CSS transitions on dynamic textareas to specific properties (`border-color`, `box-shadow`) to ensure real-time height adjustments feel instant and smooth.
