@@ -45,3 +45,7 @@
 ## 2026-09-05 - Accessible External Link Visual Cues and Screen Reader Parity
 **Learning:** `target="_blank"` links with custom `aria-label` text can hide the fact that a link opens in a new tab from screen reader users if `(opens in new tab)` is omitted, while sighted users lack context without a visual indicator.
 **Action:** Always include `(opens in new tab)` in `aria-label` overrides for `target="_blank"` links and pair them with an `aria-hidden="true"` external link icon (`.external-icon`) for visual parity across input modalities.
+
+## 2026-10-22 - Programmatic Input Reset Event Synchronization
+**Learning:** Programmatically setting `input.value = ''` when handling keyboard shortcuts (like Escape to clear) or clear button clicks does not natively trigger `input` events, which can cause other form listeners to get out of sync.
+**Action:** Always dispatch `input.dispatchEvent(new Event('input'))` after programmatically clearing text input values.
