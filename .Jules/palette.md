@@ -45,3 +45,7 @@
 ## 2026-09-05 - Accessible External Link Visual Cues and Screen Reader Parity
 **Learning:** `target="_blank"` links with custom `aria-label` text can hide the fact that a link opens in a new tab from screen reader users if `(opens in new tab)` is omitted, while sighted users lack context without a visual indicator.
 **Action:** Always include `(opens in new tab)` in `aria-label` overrides for `target="_blank"` links and pair them with an `aria-hidden="true"` external link icon (`.external-icon`) for visual parity across input modalities.
+
+## 2026-10-28 - Keyboard Clearing and Synchronized Event Dispatch for Form Inputs
+**Learning:** Adding interactive clear buttons to text inputs requires keyboard shortcut parity (Escape key) and explicit native `input` event dispatch (`i.dispatchEvent(new Event('input'))`) so connected state handlers (like character counters, clear button visibility, or validation observers) stay perfectly synchronized.
+**Action:** When creating custom clear controls or Escape key handlers for text inputs, always fire a native `input` event upon clearing and stop event propagation (`e.stopPropagation()`) to prevent accidentally triggering parent overlay handlers.
