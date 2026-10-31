@@ -414,8 +414,7 @@ img {
     gap: 15px;
 }
 
-.contact-form input,
-.contact-form textarea {
+.contact-form input {
     padding: 15px;
     border: 1px solid var(--border-color);
     background-color: var(--bg-color);
@@ -425,6 +424,21 @@ img {
     font-size: 1rem;
     outline: none;
     transition: var(--transition);
+}
+
+.contact-form textarea {
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    color: var(--white);
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 1rem;
+    outline: none;
+    min-height: 120px;
+    resize: vertical;
+    overflow-y: hidden;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .contact-form input:focus,
