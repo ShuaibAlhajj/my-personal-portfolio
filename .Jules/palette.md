@@ -45,3 +45,7 @@
 ## 2026-09-05 - Accessible External Link Visual Cues and Screen Reader Parity
 **Learning:** `target="_blank"` links with custom `aria-label` text can hide the fact that a link opens in a new tab from screen reader users if `(opens in new tab)` is omitted, while sighted users lack context without a visual indicator.
 **Action:** Always include `(opens in new tab)` in `aria-label` overrides for `target="_blank"` links and pair them with an `aria-hidden="true"` external link icon (`.external-icon`) for visual parity across input modalities.
+
+## 2026-10-30 - Transition Scoping for Auto-Expanding Form Inputs
+**Learning:** Using broad CSS transitions (e.g. `transition: var(--transition)` which maps to `all 0.3s ease`) on elements whose geometry changes programmatically on input causes visible lag and jitter while typing or deleting multi-line text.
+**Action:** Explicitly scope transitions on dynamically resizing text inputs to specific non-geometric properties (`transition: border-color 0.3s ease, box-shadow 0.3s ease`) and set `overflow-y: hidden` so height adjustments feel instantaneous and fluid without cramped nested scrollbars.
