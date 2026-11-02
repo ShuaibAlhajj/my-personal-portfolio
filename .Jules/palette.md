@@ -45,3 +45,7 @@
 ## 2026-09-05 - Accessible External Link Visual Cues and Screen Reader Parity
 **Learning:** `target="_blank"` links with custom `aria-label` text can hide the fact that a link opens in a new tab from screen reader users if `(opens in new tab)` is omitted, while sighted users lack context without a visual indicator.
 **Action:** Always include `(opens in new tab)` in `aria-label` overrides for `target="_blank"` links and pair them with an `aria-hidden="true"` external link icon (`.external-icon`) for visual parity across input modalities.
+
+## 2026-11-02 - Comprehensive Reduced Motion Support Across CSS and JS
+**Learning:** Programmatic smooth scrolling in JavaScript (`window.scrollTo({ behavior: 'smooth' })`) ignores CSS `scroll-behavior: auto` declarations inside `@media (prefers-reduced-motion: reduce)`, forcing disorienting smooth scrolling on users with vestibular disorders.
+**Action:** Always pair CSS `@media (prefers-reduced-motion: reduce)` animation/transition reductions with JavaScript checks via `window.matchMedia('(prefers-reduced-motion: reduce)').matches`, switching scroll `behavior` dynamically between `'smooth'` and `'auto'`.
