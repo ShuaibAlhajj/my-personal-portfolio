@@ -664,3 +664,16 @@ footer {
 #back-to-top.active { opacity: 1; visibility: visible; }
 #back-to-top:hover,
 #back-to-top:focus-visible { background: var(--primary-hover); transform: translateY(-5px); box-shadow: var(--shadow-hover); }
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto !important;
+    }
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        animation-delay: 0s !important;
+        transition-duration: 0.01ms !important;
+        transition-delay: 0s !important;
+    }
+}
