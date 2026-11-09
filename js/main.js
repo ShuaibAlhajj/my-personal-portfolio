@@ -82,9 +82,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (backToTop) {
             backToTop.addEventListener('click', () => {
+                const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
                 window.scrollTo({
                     top: 0,
-                    behavior: 'smooth'
+                    behavior: prefersReducedMotion ? 'auto' : 'smooth'
                 });
                 const homeSection = document.getElementById('home');
                 if (homeSection) homeSection.focus();
@@ -286,13 +287,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 // Account for fixed navbar height
+                const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
                 const headerOffset = 70;
                 const elementPosition = targetElement.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.scrollY - headerOffset;
 
                 window.scrollTo({
                     top: offsetPosition,
-                    behavior: "smooth"
+                    behavior: prefersReducedMotion ? "auto" : "smooth"
                 });
 
                 // Move focus to target element
